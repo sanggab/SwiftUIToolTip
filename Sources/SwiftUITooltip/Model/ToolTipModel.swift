@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// 꼬깔콘의 포지션 - 상, 하, 좌, 우
+/// 삼각형의 위치 - 상, 하, 좌, 우
 @frozen public enum TailPosition: Equatable {
     case top
     
@@ -18,7 +18,7 @@ import SwiftUI
     case bottom
 }
 
-/// ToolTip의 shape 옵션
+/// ToolTip의 fill, stroke, strokeBorder의 옵션 style
 @frozen public enum ToolTipShapeStyle: Equatable {
     case fill
     
@@ -31,22 +31,31 @@ import SwiftUI
     case fillWithStrokeBorder
 }
 
+/// ToolTip을 구성하기 위해 필요한 모델
 @frozen public struct ToolTipModel: Equatable {
     
+    /// ToolTip의 fill, stroke, strokeBorder의 옵션 style
     public var style: ToolTipShapeStyle
     
+    /// 삼각형의 사이즈
     public var tailSize: CGSize
     
+    /// 삼각형의 위치 - 상/하/좌/우
     public var tailPosition: TailPosition
     
+    /// center에서 x,y좌표를 기준으로 얼만큼 움직일것인가
     public var movePoint: CGFloat
     
+    /// View의 cornerRadius
     public var cornerRadius: CGFloat
     
+    /// style의 fill이 들어간 옵션일 때, 적용되는 Color
     public var fillColor: Color
     
+    /// style의 stroke이 들어간 옵션일 때, 적용되는 Color
     public var strokeColor: Color
     
+    /// StrokeStyle옵션
     public var strokeStyle: StrokeStyle
     
     public init(style: ToolTipShapeStyle,

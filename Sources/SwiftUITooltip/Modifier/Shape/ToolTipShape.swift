@@ -7,15 +7,24 @@
 
 import SwiftUI
 
+/// ToolTip을 구성하는 CustomShape
 public struct ToolTipShape: Shape, InsettableShape {
     
     @Environment(\.layoutDirection) private var layoutDirection
     
+    /// View의 cornerRadius
     public var radius: CGFloat
+    
+    /// 삼각형의 사이즈
     public var tailSize: CGSize
+    
+    /// 삼각형의 위치 - 상/하/좌/우
     public var tailPosition: TailPosition
+    
+    /// center에서 x,y좌표를 기준으로 얼만큼 움직일것인가
     public var movePoint: CGFloat
     
+    /// stroke의 inset 값
     public var insetValue: CGFloat = 0
     
     public init(radius: CGFloat,
@@ -28,6 +37,7 @@ public struct ToolTipShape: Shape, InsettableShape {
         self.movePoint = movePoint
     }
     
+    /// Path를 그려준다.
     public func path(in rect: CGRect) -> Path {
         switch tailPosition {
         case .top:
@@ -49,7 +59,7 @@ public struct ToolTipShape: Shape, InsettableShape {
         }
     }
     
-    
+    /// stroke옵션일 때, inset의 값을 적용시켜주는 Method
     public func inset(by amount: CGFloat) -> some InsettableShape {
         var tooltip = self
         tooltip.insetValue = amount
