@@ -36,17 +36,25 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 | **strokeColor** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
 | **strokeStyle** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
+
+### 주의점
+
+ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있습니다.   
+기본적으로 모든 style들은 tailSize, tailPosition, movePoint, cornerRadius를 다 적용받습니다.
+하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
+ex) style이 fill은 fillColor만 O
+
 * **`func toolTip(style: ToolTipShapeStyle,
-                            tailSize: CGSize = .zero,
-                            tailPosition: TailPosition = .top,
-                            movePoint: CGFloat = .zero,
-                            cornerRadius: CGFloat = .zero,
-                            fillColor: Color = .white,
-                            strokeColor: Color = .white,
-                            strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
+                  tailSize: CGSize = .zero,
+                  tailPosition: TailPosition = .top,
+                  movePoint: CGFloat = .zero,
+                  cornerRadius: CGFloat = .zero,
+                  fillColor: Color = .white,
+                  strokeColor: Color = .white,
+                  strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
 
 
-
+설정한 parameters에 따라 toolTip을 그립니다.
 
 
 
@@ -55,7 +63,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 
 * **`func toolTip(_ model: @escaping () -> ToolTipModel) -> some View`**
 
-
+closure에 구현한 model을 이용해 toolTip을 그립니다.
 
 
 
