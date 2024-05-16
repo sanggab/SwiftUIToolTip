@@ -42,7 +42,14 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있습니다.   
 기본적으로 모든 style들은 tailSize, tailPosition, movePoint, cornerRadius를 다 적용받습니다.
 하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
-ex) style이 fill은 fillColor만 O
+
+| style | fillColor | strokeColor | strokeStyle |
+|---------------------|:------------------:|---------:|----------|
+| **fill** | O | X | X |
+| **fill** | O | X | X |
+| **fill** | O | X | X |
+| **fill** | O | X | X |
+| **fill** | O | X | X |
 
 * **`func toolTip(style: ToolTipShapeStyle,
                   tailSize: CGSize = .zero,
