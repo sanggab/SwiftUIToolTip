@@ -24,6 +24,17 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 <a name="toolTip_modifier"></a>
 ## ToolTip Modifier
 
+##### ToolTipModel
+| Value | Description | Default |
+|---------------------|:------------------:|---------|
+| **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
+| **tailSize** | ToolTip의 삼각형의 Size | zero |
+| **tailPosition** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
+| **movePoint** | ToolTip이 삼각형이 position의 center의 위치에서 x,y좌표를 기준으로 해당 값 만큼 움직일지 정한다. | zero(center) |
+| **cornerRadius** | View의 CornerRadius | zero |
+| **fillColor** | style이 fill일 때 적용되는 옵션 - Color를 바꾼다. | white |
+| **strokeColor** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
+| **strokeStyle** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
 * **`func toolTip(style: ToolTipShapeStyle,
                             tailSize: CGSize = .zero,
@@ -32,6 +43,19 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
                             cornerRadius: CGFloat = .zero,
                             fillColor: Color = .white,
                             strokeColor: Color = .white,
-                            strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**    
+                            strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
 
-* **`func toolTip(_ model: @escaping () -> ToolTipModel) -> some View`**   
+
+
+
+
+
+
+  
+
+* **`func toolTip(_ model: @escaping () -> ToolTipModel) -> some View`**
+
+
+
+
+
