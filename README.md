@@ -58,8 +58,9 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
 
 <br>
 
+**Method**
 
-1. * **`func toolTip(style: ToolTipShapeStyle,
+* **`func toolTip(style: ToolTipShapeStyle,
                      tailSize: CGSize = .zero,
                      tailPosition: TailPosition = .top,
                      movePoint: CGFloat = .zero,
@@ -69,16 +70,29 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
                      strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
 
 
-설정한 parameters에 따라 toolTip을 그립니다.
+   설정한 parameters에 따라 toolTip을 그립니다.
 
 
 
+   ##### Usage examples:
 
-  
-
+  ```
+  Text("나는 문어 대왕 문어")
+            .padding(.all, 8)
+            .toolTip(style: .fillWithStroke,
+                     tailSize: CGSize(width: 20, height: 14),
+                     tailPosition: .top,
+                     movePoint: 0,
+                     cornerRadius: 6,
+                     fillColor: .white,
+                     strokeColor: .blue,
+                     strokeStyle: StrokeStyle(lineWidth: 2,
+                                              lineCap: .round,
+                                              lineJoin: .round))
+  ```
 * **`func toolTip(_ model: @escaping () -> ToolTipModel) -> some View`**
 
-closure에 구현한 model을 이용해 toolTip을 그립니다.
+   closure에 구현한 model을 이용해 toolTip을 그립니다.
 
 
 
