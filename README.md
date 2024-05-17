@@ -78,39 +78,45 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
 
    ##### Usage examples:
 
-  ```
-  Text("나는 문어 대왕 문어")
-      .padding(.all, 8)
-      .toolTip(style: .fillWithStroke,
-               tailSize: CGSize(width: 20, height: 14),
-               tailPosition: .top,
-               movePoint: 0,
-               cornerRadius: 6,
-               fillColor: .white,
-               strokeColor: .blue,
-               strokeStyle: StrokeStyle(lineWidth: 2,
-                                        lineCap: .round,
-                                        lineJoin: .round))
-  ```
+   ```
+   Text("나는 문어 대왕 문어")
+       .padding(.all, 8)
+       .toolTip(style: .fillWithStroke,
+                tailSize: CGSize(width: 20, height: 14),
+                tailPosition: .top,
+                movePoint: 0,
+                cornerRadius: 6,
+                fillColor: .white,
+                strokeColor: .blue,
+                strokeStyle: StrokeStyle(lineWidth: 2,
+                                         lineCap: .round,
+                                         lineJoin: .round))
+   ```
+
+
+   <img src="doc_img/toolTip1.png" width="360"/>
+
+  
 * **`func toolTip(_ model: @escaping () -> ToolTipModel) -> some View`**
 
    closure에 구현한 model을 이용해 toolTip을 그립니다.
 
    ###### Usage examples:
 
-  ```
-  Text("나는 문어 대왕 문어")
-      .padding(.all, 8)
-      .toolTip {
-          ToolTipModel(style: .strokeBorder,
-                       tailSize: CGSize(width: 20, height: 14),
-                       tailPosition: .bottom,
-                       movePoint: 30,
-                       cornerRadius: 10,
-                       strokeColor: .orange,
-                       strokeStyle: StrokeStyle(lineWidth: 2,
-                                                lineCap: .round,
-                                                lineJoin: .round))
-      }
-  ```
+   ```
+   Text("나는 문어 대왕 문어")
+       .padding(.all, 8)
+       .toolTip {
+           ToolTipModel(style: .strokeBorder,
+                        tailSize: CGSize(width: 20, height: 14),
+                        tailPosition: .bottom,
+                        movePoint: 30,
+                        cornerRadius: 10,
+                        strokeColor: .orange,
+                        strokeStyle: StrokeStyle(lineWidth: 2,
+                                                 lineCap: .round,
+                                                 lineJoin: .round))
+       }
+   ```
 
+   <img src="doc_img/toolTip2.png" width="360"/>
