@@ -15,43 +15,40 @@ public struct ToolTipModifier: ViewModifier {
     }
     
     public func body(content: Content) -> some View {
+        content
+            .overlay(overlayShapeView)
+            .background(backgroundShapeView)
+    }
+    
+    @ViewBuilder
+    private var overlayShapeView: some View {
         let style = model.style
         
-        content
-            .overlay {
-                if style == .stroke || style == .fillWithStroke {
-                    ToolTipShape(radius: model.cornerRadius,
-                                 tailSize: model.tailSize,
-                                 tailPosition: model.tailPosition,
-                                 movePoint: model.movePoint)
-                    .stroke(model.strokeColor, style: model.strokeStyle)
-                } else if style == .strokeBorder || style == .fillWithStrokeBorder {
-                    ToolTipShape(radius: model.cornerRadius,
-                                 tailSize: model.tailSize,
-                                 tailPosition: model.tailPosition,
-                                 movePoint: model.movePoint)
-                    .strokeBorder(model.strokeColor, style: model.strokeStyle)
-                } else {
-                    EmptyView()
-                }
-            }
-            .background {
-                if style == .fill || style == .fillWithStroke {
-                    ToolTipShape(radius: model.cornerRadius,
-                                 tailSize: model.tailSize,
-                                 tailPosition: model.tailPosition,
-                                 movePoint: model.movePoint)
-                    .fill(model.fillColor)
-                } else if style == .fillWithStrokeBorder {
-                    ToolTipShape(radius: model.cornerRadius,
-                                 tailSize: model.tailSize,
-                                 tailPosition: model.tailPosition,
-                                 movePoint: model.movePoint)
-                    .inset(by: model.strokeStyle.lineWidth / 2)
-                    .fill(model.fillColor)
-                } else {
-                    EmptyView()
-                }
-            }
+        if style == .stroke || style == .fillWithStroke {
+            ToolTipShape(model: model)
+                .stroke(model.strokeColor, style: model.strokeStyle)
+        } else if style == .strokeBorder || style == .fillWithStrokeBorder {
+            ToolTipShape(model: model)
+                .strokeBorder(model.strokeColor, style: model.strokeStyle)
+        } else {
+            EmptyView()
+        }
     }
+    
+    @ViewBuilder
+    private var backgroundShapeView: some View {
+        let style = model.style
+        
+        if style == .fill || style == .fillWithStroke {
+            ToolTipShape(model: model)
+                .fill(model.fillColor)
+        } else if style == .fillWithStrokeBorder {
+            ToolTipShape(model: model)
+                .inset(by: model.strokeStyle.lineWidth / 2)
+                .fill(model.fillColor)
+        } else {
+            EmptyView()
+        }
+    }
+
 }

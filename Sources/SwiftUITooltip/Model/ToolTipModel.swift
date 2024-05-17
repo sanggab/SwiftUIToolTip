@@ -8,7 +8,8 @@
 import SwiftUI
 
 /// 삼각형의 위치 - 상, 하, 좌, 우
-@frozen public enum TailPosition: Equatable {
+@frozen
+public enum TailPosition: Equatable {
     case top
     
     case leading
@@ -19,7 +20,8 @@ import SwiftUI
 }
 
 /// ToolTip의 fill, stroke, strokeBorder의 옵션 style
-@frozen public enum ToolTipShapeStyle: Equatable {
+@frozen
+public enum ToolTipShapeStyle: Equatable {
     case fill
     
     case stroke
@@ -32,7 +34,8 @@ import SwiftUI
 }
 
 /// ToolTip을 구성하기 위해 필요한 모델
-@frozen public struct ToolTipModel: Equatable {
+@frozen
+public struct ToolTipModel: Equatable {
     
     /// ToolTip의 fill, stroke, strokeBorder의 옵션 style
     public var style: ToolTipShapeStyle
