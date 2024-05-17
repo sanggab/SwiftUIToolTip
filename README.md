@@ -10,6 +10,7 @@
 ### Content
 * [Documentation](#documentation)
   * [ToolTip Modifier](#toolTip_modifier)
+  * [주의점](#attention)
  
 
 
@@ -37,6 +38,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 | **strokeStyle** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
 
+<a name="attention"></a>
 ### 주의점
 
 ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있습니다.   
@@ -53,14 +55,18 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
 
 그리고 기본적으로 Shape의 특성을 그대로 사용하기 때문에 border을 적용시킬 때, stroke와 strokeBorder의 차이점을 유의하셔야 합니다.
 
-* **`func toolTip(style: ToolTipShapeStyle,
-                  tailSize: CGSize = .zero,
-                  tailPosition: TailPosition = .top,
-                  movePoint: CGFloat = .zero,
-                  cornerRadius: CGFloat = .zero,
-                  fillColor: Color = .white,
-                  strokeColor: Color = .white,
-                  strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
+
+<br>
+
+
+1. * **`func toolTip(style: ToolTipShapeStyle,
+                     tailSize: CGSize = .zero,
+                     tailPosition: TailPosition = .top,
+                     movePoint: CGFloat = .zero,
+                     cornerRadius: CGFloat = .zero,
+                     fillColor: Color = .white,
+                     strokeColor: Color = .white,
+                     strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
 
 
 설정한 parameters에 따라 toolTip을 그립니다.
