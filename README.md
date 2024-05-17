@@ -26,7 +26,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 
 ##### ToolTipModel
 | Value | Description | Default |
-|---------------------|:------------------:|---------|
+|:---------------------:|:------------------:|:---------:|
 | **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
 | **tailSize** | ToolTip의 삼각형의 Size | zero |
 | **tailPosition** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
@@ -44,12 +44,14 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
 하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
 
 | style | fillColor | strokeColor | strokeStyle |
-|---------------------|:------------------:|---------:|----------|
+|:---------------------:|:-------:|:-------:|:-------:|
 | **fill** | O | X | X |
-| **fill** | O | X | X |
-| **fill** | O | X | X |
-| **fill** | O | X | X |
-| **fill** | O | X | X |
+| **stroke** | X | O | O |
+| **strokeBorder** | X | O | O |
+| **fillWithStroke** | O | O | O |
+| **fillWithStrokeBorder** | O | O | O |
+
+그리고 기본적으로 Shape의 특성을 그대로 사용하기 때문에 border을 적용시킬 때, stroke와 strokeBorder의 차이점을 유의하셔야 합니다.
 
 * **`func toolTip(style: ToolTipShapeStyle,
                   tailSize: CGSize = .zero,
