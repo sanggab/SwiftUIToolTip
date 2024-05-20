@@ -1,4 +1,4 @@
-# SwiftUITooltip
+# SwiftUIToolTip
 
 
 ### Requirements
