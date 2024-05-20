@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  ToolTipModel.swift
 //  
 //
 //  Created by Gab on 2024/02/27.

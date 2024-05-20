@@ -1,6 +1,6 @@
 //
-//  SwiftUIView.swift
-//  
+//  ViewExtension.swift
+//
 //
 //  Created by Gab on 2024/02/27.
 //
