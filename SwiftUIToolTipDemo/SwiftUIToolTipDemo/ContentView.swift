@@ -10,8 +10,8 @@ import SwiftUIToolTip
 
 struct ContentView: View {
     var body: some View {
-        Text("100ss")
-            .frame(height: 18)
+        Text("100sss")
+//            .frame(height: 36)
 //            .padding()
 //            .background(Color.gray, alignment: .center)
 //            .cornerRadius(5)
@@ -20,9 +20,9 @@ struct ContentView: View {
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 20, height: 20),
-                             tailPosition: .leading,
-                             tailAlignment: .trailing,
+                             tailSize: CGSize(width: 20, height: 10),
+                             tailPosition: .top,
+                             tailAlignment: .leading,
                              cornerRadius: 10,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),

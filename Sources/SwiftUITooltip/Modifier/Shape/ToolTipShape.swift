@@ -73,7 +73,22 @@ public struct ToolTipShape: Shape, InsettableShape {
                 viewModel.update(\.cornerRadius, calHalfMin)
                 
             } else {
+                let drawBaseLine = viewModel(\.tailSize.width) + (cornerRadius * 2)
+                print("drawBaseLine : \(drawBaseLine)")
                 
+                if drawBaseLine > rect.height {
+                    print("현재 입력한 데이터로는 이상하다 cornerRadius 재정의")
+                    viewModel.update(\.canDrawTail, true)
+                    var calHalfMin = min(halfWidth, halfHeight)
+                    calHalfMin = min(calHalfMin, cornerRadius)
+                    calHalfMin = min(calHalfMin, cornerRadius - (drawBaseLine - rect.height) / 2)
+                    
+                    viewModel.update(\.cornerRadius, calHalfMin)
+                } else {
+                    print("음음 그냥 통과인 것 같지만 cornerRadius가 halfWidth하고 비교해서 재정립 해야한다.")
+                    viewModel.update(\.canDrawTail, true)
+                    viewModel.update(\.cornerRadius, min(viewModel(\.cornerRadius), halfWidth))
+                }
             }
             
         case .top, .bottom:
