@@ -105,7 +105,46 @@ private extension ToolTipShape {
     
     func getPathToTailSizeOver(in rect: CGRect) -> Path {
         Path { path in
+            let cornerRadius: CGFloat = viewModel(\.cornerRadius)
             
+            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
+                                        y: rect.minY + cornerRadius),
+                        radius: cornerRadius - insetValue,
+                        startAngle: .degrees(270),
+                        endAngle: .degrees(0),
+                        clockwise: false)
+            
+            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
+                                     y: rect.maxY - cornerRadius))
+            
+            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
+                                        y: rect.maxY - cornerRadius),
+                        radius: cornerRadius - insetValue,
+                        startAngle: .degrees(0),
+                        endAngle: .degrees(90),
+                        clockwise: false)
+            
+            path.addLine(to: CGPoint(x: rect.minX + cornerRadius,
+                                     y: rect.maxY - insetValue))
+            
+            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
+                                        y: rect.maxY - cornerRadius),
+                        radius: cornerRadius - insetValue,
+                        startAngle: .degrees(90),
+                        endAngle: .degrees(180),
+                        clockwise: false)
+            
+            path.addLine(to: CGPoint(x: rect.minX + insetValue,
+                                     y: rect.minY + cornerRadius))
+            
+            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
+                                        y: rect.minY + cornerRadius),
+                        radius: cornerRadius - insetValue,
+                        startAngle: .degrees(180),
+                        endAngle: .degrees(270),
+                        clockwise: false)
+            
+            path.closeSubpath()
         }
     }
     

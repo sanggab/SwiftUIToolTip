@@ -20,7 +20,7 @@ struct ContentView: View {
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 20, height: 10),
+                             tailSize: CGSize(width: 70, height: 10),
                              tailPosition: .top,
                              tailAlignment: .leading,
                              cornerRadius: 10,
