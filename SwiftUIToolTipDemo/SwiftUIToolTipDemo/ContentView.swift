@@ -10,23 +10,26 @@ import SwiftUIToolTip
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-        .toolTip(style: .fillWithStrokeBorder,
-                 tailSize: CGSize(width: 20, height: 14),
-                 tailPosition: .top,
-                 movePoint: .zero,
-                 cornerRadius: 10,
-                 fillColor: .pink,
-                 strokeColor: .mint,
-                 strokeStyle: StrokeStyle(lineWidth: 4,
-                                          lineCap: .round,
-                                          lineJoin: .round))
+        Text("100ss")
+            .frame(height: 18)
+//            .padding()
+//            .background(Color.gray, alignment: .center)
+//            .cornerRadius(5)
+//            .cornerRadius(5)
+            .background(RoundedRectangle(cornerRadius: 10).strokeBorder(style: StrokeStyle(lineWidth: 2, lineCap: .round)), alignment: .center)
+            .toolTip {
+                ToolTipModel(style: .strokeBorder,
+                             mode: .flexible,
+                             tailSize: CGSize(width: 20, height: 20),
+                             tailPosition: .leading,
+                             tailAlignment: .trailing,
+                             cornerRadius: 10,
+                             fillColor: .blue,
+                             strokeColor: .pink.opacity(0.8),
+                             strokeStyle: StrokeStyle(lineWidth: 2,
+                                                      lineCap: .round,
+                                                      lineJoin: .round))
+            }
     }
 }
 

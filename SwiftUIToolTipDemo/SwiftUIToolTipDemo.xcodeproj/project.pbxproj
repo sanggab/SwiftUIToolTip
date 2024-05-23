@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFD500B82BFD7B230013B2DA /* SwiftUIToolTip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD500B72BFD7B230013B2DA /* SwiftUIToolTip.framework */; };
+		EFD500B92BFD7B230013B2DA /* SwiftUIToolTip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EFD500B72BFD7B230013B2DA /* SwiftUIToolTip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EFD5FFAA2BFC7E6A0013B2DA /* SwiftUIToolTipDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD5FFA92BFC7E6A0013B2DA /* SwiftUIToolTipDemoApp.swift */; };
 		EFD5FFAC2BFC7E6A0013B2DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD5FFAB2BFC7E6A0013B2DA /* ContentView.swift */; };
 		EFD5FFAE2BFC7E6C0013B2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFD5FFAD2BFC7E6C0013B2DA /* Assets.xcassets */; };
@@ -33,7 +35,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EFD500BA2BFD7B230013B2DA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EFD500B92BFD7B230013B2DA /* SwiftUIToolTip.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		EFD500B72BFD7B230013B2DA /* SwiftUIToolTip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIToolTip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5FFA62BFC7E6A0013B2DA /* SwiftUIToolTipDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIToolTipDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5FFA92BFC7E6A0013B2DA /* SwiftUIToolTipDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIToolTipDemoApp.swift; sourceTree = "<group>"; };
 		EFD5FFAB2BFC7E6A0013B2DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD500B82BFD7B230013B2DA /* SwiftUIToolTip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFD500B62BFD7B230013B2DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFD500B72BFD7B230013B2DA /* SwiftUIToolTip.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EFD5FF9D2BFC7E6A0013B2DA = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +104,7 @@
 				EFD5FFB92BFC7E6C0013B2DA /* SwiftUIToolTipDemoTests */,
 				EFD5FFC32BFC7E6C0013B2DA /* SwiftUIToolTipDemoUITests */,
 				EFD5FFA72BFC7E6A0013B2DA /* Products */,
+				EFD500B62BFD7B230013B2DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +164,7 @@
 				EFD5FFA22BFC7E6A0013B2DA /* Sources */,
 				EFD5FFA32BFC7E6A0013B2DA /* Frameworks */,
 				EFD5FFA42BFC7E6A0013B2DA /* Resources */,
+				EFD500BA2BFD7B230013B2DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -207,7 +235,7 @@
 				};
 			};
 			buildConfigurationList = EFD5FFA12BFC7E6A0013B2DA /* Build configuration list for PBXProject "SwiftUIToolTipDemo" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -347,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -404,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -430,16 +458,20 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -459,16 +491,20 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -481,7 +517,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA868URLCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,7 +537,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA868URLCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

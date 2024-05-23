@@ -23,21 +23,23 @@ public extension View {
     ///     - strokeColor: style의 stroke이 들어간 옵션일 때, 적용되는 Color
     ///     - strokeStyle: StrokeStyle옵션
     @inlinable func toolTip(style: ToolTipShapeStyle,
+                            mode: ToolTipLayoutMode = .fixed,
                             tailSize: CGSize = .zero,
                             tailPosition: TailPosition = .top,
-                            movePoint: CGFloat = .zero,
+                            tailAlignment: TailAlignment = .center,
                             cornerRadius: CGFloat = .zero,
                             fillColor: Color = .white,
                             strokeColor: Color = .white,
                             strokeStyle: StrokeStyle = StrokeStyle()) -> some View {
         modifier(ToolTipModifier(model: ToolTipModel(style: style,
-                                                         tailSize: tailSize,
-                                                         tailPosition: tailPosition,
-                                                         movePoint: movePoint,
-                                                         cornerRadius: cornerRadius,
-                                                         fillColor: fillColor,
-                                                         strokeColor: strokeColor,
-                                                         strokeStyle: strokeStyle)))
+                                                     mode: mode,
+                                                     tailSize: tailSize,
+                                                     tailPosition: tailPosition,
+                                                     tailAlignment: tailAlignment,
+                                                     cornerRadius: cornerRadius,
+                                                     fillColor: fillColor,
+                                                     strokeColor: strokeColor,
+                                                     strokeStyle: strokeStyle)))
     }
     
     /// ToolTip Modifier

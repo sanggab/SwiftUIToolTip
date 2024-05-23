@@ -12,8 +12,12 @@ public struct ToolTipShape: Shape, InsettableShape {
     
     public var model: ToolTipModel
     
+    @ObservedObject var viewModel: ToolTipViewModel
+    
     public init(model: ToolTipModel) {
         self.model = model
+        
+        viewModel = ToolTipViewModel(model: model)
     }
     
     public var insetValue: CGFloat = 0
@@ -45,167 +49,80 @@ public struct ToolTipShape: Shape, InsettableShape {
         tooltip.insetValue = amount
         return tooltip
     }
+    
+    public func calCornerRadius(in rect: CGRect) {
+        print("resetCornenRadius rect : \(rect)")
+        print("cornerRadius : \(viewModel(\.cornerRadius))")
+        
+        let halfWidth = rect.width / 2
+        let halfHeight = rect.height / 2
+        let cornerRadius = viewModel(\.cornerRadius)
+//
+//        let calHalfMin = min(halfWidth, halfHeight)
+//        print("calHalfMin : \(calHalfMin)")
+//        
+//        viewModel.update(\.cornerRadius, min(calHalfMin, viewModel(\.cornerRadius)))
+        switch viewModel(\.tailPosition) {
+        case .leading, .trailing:
+            print("ih")
+            if viewModel(\.tailSize).width > rect.height {
+                print("해당 height에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
+                viewModel.update(\.canDrawTail, false)
+                var calHalfMin = min(halfWidth, halfHeight)
+                calHalfMin = min(calHalfMin, cornerRadius)
+                viewModel.update(\.cornerRadius, calHalfMin)
+                
+            } else {
+                
+            }
+            
+        case .top, .bottom:
+            if viewModel(\.tailSize).width > rect.width {
+                print("해당 width에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
+                viewModel.update(\.canDrawTail, false)
+                var calHalfMin = min(halfWidth, halfHeight)
+                calHalfMin = min(calHalfMin, cornerRadius)
+                viewModel.update(\.cornerRadius, calHalfMin)
+            } else {
+                let drawBaseLine = viewModel(\.tailSize).width + (cornerRadius * 2)
+                print("drawBaseLine : \(drawBaseLine)")
+                
+                if drawBaseLine > rect.width {
+                    print("현재 입력한 데이터로는 이상하다 cornerRadius 재정의")
+                    viewModel.update(\.canDrawTail, true)
+                    var calHalfMin = min(halfWidth, halfHeight)
+                    calHalfMin = min(calHalfMin, cornerRadius)
+                    calHalfMin = min(calHalfMin, cornerRadius - (drawBaseLine - rect.width) / 2)
+                    
+                    viewModel.update(\.cornerRadius, calHalfMin)
+                } else {
+                    print("음음 그냥 통과인 것 같지만 cornerRadius가 halfHeight하고 비교해서 재정립 해야한다.")
+                    viewModel.update(\.canDrawTail, true)
+                    viewModel.update(\.cornerRadius, min(viewModel(\.cornerRadius), halfHeight))
+                }
+            }
+        }
+        
+        print("계산끝난 cornerRadius : \(viewModel(\.cornerRadius))")
+        
+    }
 }
 
 private extension ToolTipShape {
     
     func tailTopPath(in rect: CGRect) -> Path {
-        Path { path in
-            
-            path.move(to: CGPoint(x: rect.midX - (model.tailSize.width / 2) + model.movePoint,
-                                  y: rect.minY + insetValue))
-            
-            path.addLine(to: CGPoint(x: rect.midX + model.movePoint,
-                                     y: rect.minY - model.tailSize.height + insetValue))
-            
-            path.addLine(to: CGPoint(x: rect.midX + (model.tailSize.width / 2) + model.movePoint,
-                                     y: rect.minY + insetValue))
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + model.cornerRadius),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - model.cornerRadius,
-                                             y: rect.maxY - insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - model.cornerRadius),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.minX + model.cornerRadius,
-                                             y: rect.minY + insetValue),
-                        radius: model.cornerRadius)
-            
-            path.closeSubpath()
-        }
+        model.mode == .fixed ? fixedTopPath(in: rect) : flexibleTopPath(in: rect)
     }
     
     func tailLeadingPath(in rect: CGRect) -> Path {
-        Path { path in
-            
-            path.move(to: CGPoint(x: rect.minX + insetValue,
-                                  y: rect.midY + (model.tailSize.width / 2) + model.movePoint))
-            
-            path.addLine(to: CGPoint(x: rect.minX - model.tailSize.height + insetValue,
-                                     y: rect.midY + model.movePoint))
-            
-            path.addLine(to: CGPoint(x: rect.minX + insetValue,
-                                     y: rect.midY - (model.tailSize.width / 2) + model.movePoint))
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.minX + model.cornerRadius,
-                                             y: rect.minY + insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + model.cornerRadius),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - model.cornerRadius,
-                                             y: rect.maxY - insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.midY + (model.tailSize.width / 2) + model.movePoint),
-                        radius: model.cornerRadius)
-            
-            path.closeSubpath()
-        }
+        model.mode == .fixed ? fixedLeadingPath(in: rect) : flexibleLeadingPath(in: rect)
     }
     
     func tailTrailingPath(in rect: CGRect) -> Path {
-        Path { path in
-            
-            path.move(to: CGPoint(x: rect.maxX - insetValue,
-                                  y: rect.midY - (model.tailSize.width / 2) + model.movePoint))
-            
-            path.addLine(to: CGPoint(x: rect.maxX + model.tailSize.height - insetValue,
-                                     y: rect.midY + model.movePoint))
-            
-            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
-                                     y: rect.midY + (model.tailSize.width / 2) + model.movePoint))
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - model.cornerRadius,
-                                             y: rect.maxY - insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - model.cornerRadius),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.minX + model.cornerRadius,
-                                             y: rect.minY + insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.midY - (model.tailSize.width / 2) + model.movePoint),
-                        radius: model.cornerRadius)
-            
-            path.closeSubpath()
-        }
+        model.mode == .fixed ? fixedTrailingPath(in: rect) : flexibleTrailingPath(in: rect)
     }
     
     func tailBottomPath(in rect: CGRect) -> Path {
-        Path { path in
-            
-            path.move(to: CGPoint(x: rect.midX + (model.tailSize.width / 2) + model.movePoint,
-                                  y: rect.maxY - insetValue))
-            
-            path.addLine(to: CGPoint(x: rect.midX + model.movePoint,
-                                     y: rect.maxY + model.tailSize.height))
-            
-            path.addLine(to: CGPoint(x: rect.midX - (model.tailSize.width / 2) + model.movePoint,
-                                     y: rect.maxY - insetValue))
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: (CGPoint(x: rect.minX + insetValue,
-                                              y: rect.maxY - model.cornerRadius)),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.minX + model.cornerRadius,
-                                             y: rect.minY + insetValue),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.minY + model.cornerRadius),
-                        radius: model.cornerRadius)
-            
-            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
-                                             y: rect.maxY - insetValue),
-                        tangent2End: CGPoint(x: rect.maxX - model.cornerRadius,
-                                             y: rect.maxY - insetValue),
-                        radius: model.cornerRadius)
-            
-            path.closeSubpath()
-        }
+        model.mode == .fixed ? fixedBottomPath(in: rect) : flexibleBottomPath(in: rect)
     }
 }
