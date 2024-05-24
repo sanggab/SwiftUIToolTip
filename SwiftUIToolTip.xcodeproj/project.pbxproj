@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */; };
+		EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */; };
+		EF32F7BB2C00562B00B2346F /* TopFlexiblePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */; };
 		EFD5008C2BFC84200013B2DA /* SwiftUIToolTip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */; };
 		EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD5009F2BFC84450013B2DA /* ViewExtension.swift */; };
 		EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A22BFC84450013B2DA /* ToolTipShape.swift */; };
 		EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A42BFC84450013B2DA /* ToolTipModifier.swift */; };
 		EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A62BFC84450013B2DA /* ToolTipModel.swift */; };
 		EFD500B32BFC85180013B2DA /* SwiftUIToolTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */; };
-		EFD500B52BFD6FD40013B2DA /* ToolTipShape + Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500B42BFD6FD40013B2DA /* ToolTipShape + Top.swift */; };
 		EFD500BC2BFDC7620013B2DA /* ToolTipShape + Leading.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */; };
 		EFD500BE2BFDC7790013B2DA /* ToolTipShape + Trailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */; };
 		EFD500C02BFDC7810013B2DA /* ToolTipShape + Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */; };
@@ -31,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFixedPath.swift; sourceTree = "<group>"; };
+		EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPathHelper.swift; sourceTree = "<group>"; };
+		EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFlexiblePath.swift; sourceTree = "<group>"; };
 		EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIToolTip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5008B2BFC84200013B2DA /* SwiftUIToolTipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIToolTipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5009F2BFC84450013B2DA /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -38,7 +43,6 @@
 		EFD500A42BFC84450013B2DA /* ToolTipModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipModifier.swift; sourceTree = "<group>"; };
 		EFD500A62BFC84450013B2DA /* ToolTipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipModel.swift; sourceTree = "<group>"; };
 		EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIToolTipTests.swift; sourceTree = "<group>"; };
-		EFD500B42BFD6FD40013B2DA /* ToolTipShape + Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Top.swift"; sourceTree = "<group>"; };
 		EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Leading.swift"; sourceTree = "<group>"; };
 		EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Trailing.swift"; sourceTree = "<group>"; };
 		EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Bottom.swift"; sourceTree = "<group>"; };
@@ -64,6 +68,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF32F7B22C00557100B2346F /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				EF32F7BE2C00564800B2346F /* Helper */,
+				EF32F7BC2C00563E00B2346F /* Fixed */,
+				EF32F7BD2C00564100B2346F /* Flexible */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		EF32F7B32C00559200B2346F /* Leading */ = {
+			isa = PBXGroup;
+			children = (
+				EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */,
+			);
+			path = Leading;
+			sourceTree = "<group>";
+		};
+		EF32F7B42C00559600B2346F /* Trailing */ = {
+			isa = PBXGroup;
+			children = (
+				EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */,
+			);
+			path = Trailing;
+			sourceTree = "<group>";
+		};
+		EF32F7B52C00559A00B2346F /* Bottom */ = {
+			isa = PBXGroup;
+			children = (
+				EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */,
+			);
+			path = Bottom;
+			sourceTree = "<group>";
+		};
+		EF32F7BC2C00563E00B2346F /* Fixed */ = {
+			isa = PBXGroup;
+			children = (
+				EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */,
+			);
+			path = Fixed;
+			sourceTree = "<group>";
+		};
+		EF32F7BD2C00564100B2346F /* Flexible */ = {
+			isa = PBXGroup;
+			children = (
+				EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */,
+			);
+			path = Flexible;
+			sourceTree = "<group>";
+		};
+		EF32F7BE2C00564800B2346F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		EFD500592BFC83E40013B2DA = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +183,11 @@
 		EFD500A12BFC84450013B2DA /* Shape */ = {
 			isa = PBXGroup;
 			children = (
+				EF32F7B22C00557100B2346F /* Top */,
+				EF32F7B32C00559200B2346F /* Leading */,
+				EF32F7B42C00559600B2346F /* Trailing */,
+				EF32F7B52C00559A00B2346F /* Bottom */,
 				EFD500A22BFC84450013B2DA /* ToolTipShape.swift */,
-				EFD500B42BFD6FD40013B2DA /* ToolTipShape + Top.swift */,
-				EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */,
-				EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */,
-				EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -281,13 +343,15 @@
 			files = (
 				EFD500BE2BFDC7790013B2DA /* ToolTipShape + Trailing.swift in Sources */,
 				EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */,
+				EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */,
+				EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */,
 				EFD500C02BFDC7810013B2DA /* ToolTipShape + Bottom.swift in Sources */,
-				EFD500B52BFD6FD40013B2DA /* ToolTipShape + Top.swift in Sources */,
 				EFD500BC2BFDC7620013B2DA /* ToolTipShape + Leading.swift in Sources */,
 				EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */,
 				EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */,
 				EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */,
 				EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */,
+				EF32F7BB2C00562B00B2346F /* TopFlexiblePath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -423,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -454,7 +518,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -464,8 +528,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -488,7 +552,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -498,8 +562,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -512,7 +576,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA868URLCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,8 +584,8 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -534,15 +598,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA868URLCA;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SimSangGab.SwiftUIToolTipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};

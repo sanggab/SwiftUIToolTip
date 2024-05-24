@@ -16,14 +16,14 @@ struct ContentView: View {
 //            .background(Color.gray, alignment: .center)
 //            .cornerRadius(5)
 //            .cornerRadius(5)
-            .background(RoundedRectangle(cornerRadius: 10).strokeBorder(style: StrokeStyle(lineWidth: 2, lineCap: .round)), alignment: .center)
+            .background(RoundedRectangle(cornerRadius: 1).strokeBorder(style: StrokeStyle(lineWidth: 2, lineCap: .round)), alignment: .center)
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 70, height: 10),
+                             tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .top,
                              tailAlignment: .leading,
-                             cornerRadius: 10,
+                             cornerRadius: 1,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),
                              strokeStyle: StrokeStyle(lineWidth: 2,

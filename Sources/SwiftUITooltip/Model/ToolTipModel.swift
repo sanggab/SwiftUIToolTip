@@ -87,6 +87,8 @@ public struct ToolTipModel: Equatable {
     
     var canDrawTail: Bool = true
     
+    var limitBaseLine: Bool = false
+    
     public init(style: ToolTipShapeStyle,
                 mode: ToolTipLayoutMode = .fixed,
                 tailSize: CGSize = .zero,

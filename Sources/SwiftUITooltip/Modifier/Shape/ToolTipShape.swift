@@ -16,7 +16,6 @@ public struct ToolTipShape: Shape, InsettableShape {
     
     public init(model: ToolTipModel) {
         self.model = model
-        
         viewModel = ToolTipViewModel(model: model)
     }
     
@@ -51,21 +50,29 @@ public struct ToolTipShape: Shape, InsettableShape {
     }
     
     public func calCornerRadius(in rect: CGRect) {
+        print("=======================================")
         print("resetCornenRadius rect : \(rect)")
         print("cornerRadius : \(viewModel(\.cornerRadius))")
+        print("insetValue : \(insetValue)")
+        
+        let style = viewModel(\.style)
+        let cornerRadius = viewModel(\.cornerRadius)
+        let tailSize = viewModel(\.tailSize)
+        
+        if style == .strokeBorder || style == .fillWithStrokeBorder,  insetValue >= cornerRadius {
+            print("cornerRadius 0으로 만든다")
+            viewModel.update(\.cornerRadius, 0)
+            viewModel.update(\.limitBaseLine, true)
+            return
+        }
         
         let halfWidth = rect.width / 2
         let halfHeight = rect.height / 2
-        let cornerRadius = viewModel(\.cornerRadius)
-//
-//        let calHalfMin = min(halfWidth, halfHeight)
-//        print("calHalfMin : \(calHalfMin)")
-//        
-//        viewModel.update(\.cornerRadius, min(calHalfMin, viewModel(\.cornerRadius)))
+        
         switch viewModel(\.tailPosition) {
         case .leading, .trailing:
             print("ih")
-            if viewModel(\.tailSize).width > rect.height {
+            if tailSize.width > rect.height {
                 print("해당 height에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
                 viewModel.update(\.canDrawTail, false)
                 var calHalfMin = min(halfWidth, halfHeight)
@@ -92,14 +99,14 @@ public struct ToolTipShape: Shape, InsettableShape {
             }
             
         case .top, .bottom:
-            if viewModel(\.tailSize).width > rect.width {
+            if tailSize.width > rect.width {
                 print("해당 width에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
                 viewModel.update(\.canDrawTail, false)
                 var calHalfMin = min(halfWidth, halfHeight)
                 calHalfMin = min(calHalfMin, cornerRadius)
                 viewModel.update(\.cornerRadius, calHalfMin)
             } else {
-                let drawBaseLine = viewModel(\.tailSize).width + (cornerRadius * 2)
+                let drawBaseLine = tailSize.width + (cornerRadius * 2)
                 print("drawBaseLine : \(drawBaseLine)")
                 
                 if drawBaseLine > rect.width {
