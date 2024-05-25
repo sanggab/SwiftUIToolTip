@@ -29,7 +29,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 ##### ToolTipModel
 | Value | Description | Default |
 |:---------------------:|:------------------:|:---------:|
-| **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
+| **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. |  |
 | **tailSize** | ToolTip의 삼각형의 Size | zero |
 | **tailPosition** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
 | **movePoint** | ToolTip이 삼각형이 position의 center의 위치에서 x,y좌표를 기준으로 해당 값 만큼 움직일지 정한다. | zero(center) |
