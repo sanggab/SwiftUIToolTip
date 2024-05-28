@@ -26,7 +26,7 @@ struct ContentView: View {
                              tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .top,
                              tailAlignment: .leading,
-                             cornerRadius: 10,
+                             cornerRadius: 1,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.9),
                              strokeStyle: StrokeStyle(lineWidth: 3,

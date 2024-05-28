@@ -61,7 +61,8 @@ public struct ToolTipShape: Shape, InsettableShape {
         
         let halfWidth = rect.width / 2
         let halfHeight = rect.height / 2
-        let hypotenuse = calculateHypotenuse(base: insetValue / 2, height: insetValue / 2)
+        let hypotenuse = insetValue * 2
+        print("hypotenuse : \(hypotenuse)")
         
         switch viewModel(\.tailPosition) {
         case .leading, .trailing:
