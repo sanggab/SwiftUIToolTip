@@ -59,26 +59,19 @@ public struct ToolTipShape: Shape, InsettableShape {
         let cornerRadius = viewModel(\.cornerRadius)
         let tailSize = viewModel(\.tailSize)
         
-        if style == .strokeBorder || style == .fillWithStrokeBorder,  insetValue >= cornerRadius {
-            print("cornerRadius 0으로 만든다")
-            viewModel.update(\.cornerRadius, 0)
-            viewModel.update(\.limitBaseLine, true)
-            return
-        }
-        
         let halfWidth = rect.width / 2
         let halfHeight = rect.height / 2
+        let hypotenuse = calculateHypotenuse(base: insetValue / 2, height: insetValue / 2)
         
         switch viewModel(\.tailPosition) {
         case .leading, .trailing:
             print("ih")
-            if tailSize.width > rect.height {
+            if tailSize.width + hypotenuse > rect.height {
                 print("해당 height에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
                 viewModel.update(\.canDrawTail, false)
                 var calHalfMin = min(halfWidth, halfHeight)
                 calHalfMin = min(calHalfMin, cornerRadius)
                 viewModel.update(\.cornerRadius, calHalfMin)
-                
             } else {
                 let drawBaseLine = viewModel(\.tailSize.width) + (cornerRadius * 2)
                 print("drawBaseLine : \(drawBaseLine)")
@@ -99,7 +92,7 @@ public struct ToolTipShape: Shape, InsettableShape {
             }
             
         case .top, .bottom:
-            if tailSize.width > rect.width {
+            if tailSize.width + hypotenuse > rect.width {
                 print("해당 width에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
                 viewModel.update(\.canDrawTail, false)
                 var calHalfMin = min(halfWidth, halfHeight)
@@ -125,9 +118,22 @@ public struct ToolTipShape: Shape, InsettableShape {
             }
         }
         
+        // MARK: - strokeBorder에서 cornerRadius가 insetValue보다 작거나 같은 경우, cornerRadius는 적용되지 않는다.
+        if style == .strokeBorder || style == .fillWithStrokeBorder,  insetValue >= cornerRadius {
+            print("cornerRadius 0으로 만든다")
+            viewModel.update(\.cornerRadius, 0)
+            viewModel.update(\.limitBaseLine, true)
+        }
+        
         print("계산끝난 cornerRadius : \(viewModel(\.cornerRadius))")
         
     }
+    
+    
+    func calculateHypotenuse(base: CGFloat, height: CGFloat) -> CGFloat {
+        return sqrt(pow(base, 2) + pow(height, 2))
+    }
+
 }
 
 private extension ToolTipShape {

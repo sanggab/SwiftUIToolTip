@@ -117,77 +117,103 @@ extension ToolTipShape {
         }
     }
     
-    func calStartPointBaseLineOver(in rect: CGRect) -> CGPoint {
-        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
-        
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("calStartPointBaseLineOver leading")
-            
-        case .center:
-            print("calStartPointBaseLineOver center")
-            
-        case .trailing:
-            print("calStartPointBaseLineOver trailing")
-            
-        case .custom(let length):
-            print("calStartPointBaseLineOver custom length : \(length)")
-        }
-     
-        print("calStartPointBaseLineOver startPoint : \(startPoint)")
-        return startPoint
-    }
-    
-    func calStartPointBaseLineNotOver(in rect: CGRect) -> CGPoint {
-        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
-        
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("calStartPointBaseLineNotOver leading")
-            
-        case .center:
-            print("calStartPointBaseLineNotOver center")
-            
-        case .trailing:
-            print("calStartPointBaseLineNotOver trailing")
-            
-        case .custom(let length):
-            print("calStartPointBaseLineNotOver custom length : \(length)")
-        }
-     
-        print("calStartPointBaseLineNotOver startPoint : \(startPoint)")
-        return startPoint
-    }
+//    func calStartPointBaseLineOver(in rect: CGRect) -> CGPoint {
+//        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+//        
+//        var startPoint: CGPoint = .zero
+//        
+//        switch viewModel(\.tailAlignment) {
+//        case .leading:
+//            print("calStartPointBaseLineOver leading")
+//            
+//        case .center:
+//            print("calStartPointBaseLineOver center")
+//            
+//        case .trailing:
+//            print("calStartPointBaseLineOver trailing")
+//            
+//        case .custom(let length):
+//            print("calStartPointBaseLineOver custom length : \(length)")
+//        }
+//     
+//        print("calStartPointBaseLineOver startPoint : \(startPoint)")
+//        return startPoint
+//    }
+//    
+//    func calStartPointBaseLineNotOver(in rect: CGRect) -> CGPoint {
+//        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+//        
+//        var startPoint: CGPoint = .zero
+//        
+//        switch viewModel(\.tailAlignment) {
+//        case .leading:
+//            print("calStartPointBaseLineNotOver leading")
+//            
+//        case .center:
+//            print("calStartPointBaseLineNotOver center")
+//            
+//        case .trailing:
+//            print("calStartPointBaseLineNotOver trailing")
+//            
+//        case .custom(let length):
+//            print("calStartPointBaseLineNotOver custom length : \(length)")
+//        }
+//     
+//        print("calStartPointBaseLineNotOver startPoint : \(startPoint)")
+//        return startPoint
+//    }
 }
 
 extension ToolTipShape {
-    
-    func calLimitBaseLineStratPoint(in rect: CGRect) -> CGPoint {
+    func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .leading:
-            print("calLimitBaseLineStratPoint leading")
+            print("leading")
+            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
+                                 y: rect.minY + insetValue)
+            
+        case .center:
+            print("center")
+            
+        case .trailing:
+            print("trailing")
+            
+        case .custom(let length):
+            print("custom length : \(length)")
+        }
+     
+        print("startPoint : \(startPoint)")
+        return startPoint
+    }
+    
+    func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .leading:
+            print("leading")
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.minY + insetValue)
             
         case .center:
-            print("calLimitBaseLineStratPoint center")
+            print("center")
             
         case .trailing:
-            print("calLimitBaseLineStratPoint trailing")
+            print("trailing")
             
         case .custom(let length):
-            print("calLimitBaseLineStratPoint custom length : \(length)")
+            print("custom length : \(length)")
         }
      
-        print("calLimitBaseLineStratPoint startPoint : \(startPoint)")
+        print("startPoint : \(startPoint)")
         return startPoint
     }
 }

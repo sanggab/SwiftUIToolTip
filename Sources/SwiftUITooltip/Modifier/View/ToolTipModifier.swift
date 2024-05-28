@@ -20,11 +20,15 @@ public struct ToolTipModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .onAppear {
-                if model.style == .strokeBorder || model.style == .fillWithStrokeBorder, model.strokeStyle.lineWidth / 2 >= model.cornerRadius {
-                    var newStyle = model.strokeStyle
-                    newStyle.lineCap = .butt
-                    newStyle.lineJoin = .miter
-                    calStrokeStyle = newStyle
+                if model.style == .strokeBorder || model.style == .fillWithStrokeBorder {
+                    if model.strokeStyle.lineWidth / 2 >= model.cornerRadius {
+                        var newStyle = model.strokeStyle
+                        newStyle.lineCap = .butt
+                        newStyle.lineJoin = .miter
+                        calStrokeStyle = newStyle
+                    } else {
+                        calStrokeStyle = model.strokeStyle
+                    }
                 }
             }
             .background(GeometryReader { proxy in
@@ -36,7 +40,7 @@ public struct ToolTipModifier: ViewModifier {
             .overlay(overlayShapeView)
             .background(backgroundShapeView)
             .onChange(of: size) { newValue in
-                var strokeStyle = model.strokeStyle
+                let strokeStyle = model.strokeStyle
                 let style = model.style
                 
                 if style == .strokeBorder || style == .fillWithStrokeBorder {
@@ -47,6 +51,9 @@ public struct ToolTipModifier: ViewModifier {
                         calStrokeStyle.lineWidth = 0
                     }
                 }
+            }
+            .onChange(of: calStrokeStyle) { newValue in
+                print("calStrokeStyle : \(newValue)")
             }
     }
     
