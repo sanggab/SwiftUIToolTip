@@ -53,8 +53,8 @@ private extension ToolTipShape {
             path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2) - insetValue,
                                      y: startPoint.y))
             
-            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius - insetValue,
-                                     y: startPoint.y))
+            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius,
+                                     y: rect.minY + insetValue))
             
             path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
                                         y: rect.minY + cornerRadius),
@@ -63,9 +63,9 @@ private extension ToolTipShape {
                         endAngle: .degrees(0),
                         clockwise: false)
             
-            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? (rect.maxX - insetValue),
-                                     y: rect.maxY - insetValue - cornerRadius))
-            
+            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+                                     y: rect.maxY - cornerRadius))
+
             path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
                                         y: rect.maxY - cornerRadius),
                         radius: cornerRadius - insetValue,
@@ -73,8 +73,8 @@ private extension ToolTipShape {
                         endAngle: .degrees(90),
                         clockwise: false)
             
-            path.addLine(to: CGPoint(x: rect.minX + insetValue + cornerRadius,
-                                     y: path.currentPoint?.y ?? (rect.maxY - insetValue)))
+            path.addLine(to: CGPoint(x: rect.minX + cornerRadius,
+                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
             
             path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
                                         y: rect.maxY - cornerRadius),
@@ -84,7 +84,7 @@ private extension ToolTipShape {
                         clockwise: false)
             
             path.addLine(to: CGPoint(x: path.currentPoint?.x ?? (rect.minX + insetValue),
-                                     y: rect.minY + insetValue + cornerRadius))
+                                     y: rect.minY + cornerRadius))
             
             path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
                                         y: rect.minY + cornerRadius),
@@ -106,7 +106,10 @@ private extension ToolTipShape {
             let startPoint: CGPoint = getStartPointToLimitBaseLine(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)
             
-            path.move(to: startPoint)
+            path.move(to: CGPoint(x: rect.minX + insetValue,
+                                  y: rect.minY + insetValue))
+            
+            path.addLine(to: startPoint)
             
             path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2),
                                      y: (path.currentPoint?.y ?? 0) - tailSize.height ))
@@ -114,17 +117,32 @@ private extension ToolTipShape {
             path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + tailSize.width / 2,
                                      y: startPoint.y))
             
-            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
+            path.addLine(to: CGPoint(x: rect.maxX,
                                      y: rect.minY + insetValue))
             
-            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+            path.move(to: CGPoint(x: rect.maxX - insetValue,
+                                  y: rect.minY + insetValue))
+            
+            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? 0,
                                      y: rect.maxY - insetValue))
             
             path.addLine(to: CGPoint(x: rect.minX + insetValue,
-                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
+                                     y: rect.maxY - insetValue))
             
-            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+            path.addLine(to: CGPoint(x: rect.minX + insetValue,
                                      y: rect.minY))
+            
+//            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
+//                                     y: rect.minY + insetValue))
+//            
+//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+//                                     y: rect.maxY - insetValue))
+//            
+//            path.addLine(to: CGPoint(x: rect.minX + insetValue,
+//                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
+//            
+//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+//                                     y: rect.minY))
         }
     }
 }
