@@ -219,6 +219,7 @@ extension ToolTipShape {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        let tailSize: CGSize = viewModel(\.tailSize)
         
         var startPoint: CGPoint = .zero
         
@@ -230,9 +231,13 @@ extension ToolTipShape {
             
         case .center:
             print("center")
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.minY + insetValue)
             
         case .trailing:
             print("trailing")
+            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width,
+                                 y: rect.minY + insetValue)
             
         case .custom(let length):
             print("custom length : \(length)")

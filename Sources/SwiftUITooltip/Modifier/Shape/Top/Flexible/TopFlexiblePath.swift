@@ -47,10 +47,10 @@ private extension ToolTipShape {
             
             path.move(to: startPoint)
             
-            path.addLine(to: CGPoint(x: startPoint.x + (tailSize.width / 2) - insetValue,
+            path.addLine(to: CGPoint(x: startPoint.x + (tailSize.width / 2),
                                      y: startPoint.y - tailSize.height))
             
-            path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2) - insetValue,
+            path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2),
                                      y: startPoint.y))
             
             path.addLine(to: CGPoint(x: rect.maxX - cornerRadius,

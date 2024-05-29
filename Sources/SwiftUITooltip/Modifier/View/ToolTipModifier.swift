@@ -21,10 +21,9 @@ public struct ToolTipModifier: ViewModifier {
         content
             .onAppear {
                 if model.style == .strokeBorder || model.style == .fillWithStrokeBorder {
-                    if model.strokeStyle.lineWidth / 2 >= model.cornerRadius {
+                    if model.strokeStyle.lineWidth / 2 >= model.cornerRadius, model.strokeStyle.lineJoin == .miter {
                         var newStyle = model.strokeStyle
-                        newStyle.lineCap = .butt
-                        newStyle.lineJoin = .miter
+                        newStyle.lineWidth = 0
                         calStrokeStyle = newStyle
                     } else {
                         calStrokeStyle = model.strokeStyle
