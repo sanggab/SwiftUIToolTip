@@ -198,7 +198,8 @@ extension ToolTipShape {
         switch viewModel(\.tailAlignment) {
         case .leading:
             print("leading")
-            
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + insetValue)
         case .center:
             print("center")
             

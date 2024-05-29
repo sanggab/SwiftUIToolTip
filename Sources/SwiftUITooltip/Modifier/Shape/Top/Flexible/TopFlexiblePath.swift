@@ -215,7 +215,23 @@ private extension ToolTipShape {
     func tailSizeOverLimitBaseLine(in rect: CGRect) -> Path {
         print(#function)
         return Path { path in
+            let startPoint: CGPoint = getStartPointToSizeOverLimitBaseLine(in: rect)
             
+            path.move(to: startPoint)
+            
+            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
+                                     y: rect.minY + insetValue))
+            
+            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+                                     y: rect.maxY - insetValue))
+            
+            path.addLine(to: CGPoint(x: rect.minX + insetValue,
+                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
+            
+            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+                                     y: rect.minY))
+            
+            path.closeSubpath()
         }
     }
 }
