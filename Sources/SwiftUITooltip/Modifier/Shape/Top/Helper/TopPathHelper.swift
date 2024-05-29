@@ -165,6 +165,56 @@ extension ToolTipShape {
 }
 
 extension ToolTipShape {
+    func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .leading:
+            print("leading")
+            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
+                                 y: rect.minY + insetValue)
+            
+        case .center:
+            print("center")
+            
+        case .trailing:
+            print("trailing")
+            
+        case .custom(let length):
+            print("custom length : \(length)")
+        }
+     
+        print("startPoint : \(startPoint)")
+        return startPoint
+    }
+    
+    func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .leading:
+            print("leading")
+            
+        case .center:
+            print("center")
+            
+        case .trailing:
+            print("trailing")
+            
+        case .custom(let length):
+            print("custom length : \(length)")
+        }
+     
+        print("startPoint : \(startPoint)")
+        return startPoint
+    }
+}
+
+extension ToolTipShape {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
@@ -193,8 +243,6 @@ extension ToolTipShape {
     
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
-        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
-        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {

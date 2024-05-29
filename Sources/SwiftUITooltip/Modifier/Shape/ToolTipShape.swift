@@ -119,7 +119,7 @@ public struct ToolTipShape: Shape, InsettableShape {
             }
         }
         
-        // MARK: - strokeBorder에서 cornerRadius가 insetValue보다 작거나 같은 경우, cornerRadius는 적용되지 않는다.
+        // MARK: - strokeBorder에서 lineJoin이 miter이면서 cornerRadius가 insetValue보다 작거나 같은 경우, cornerRadius는 적용되지 않는다.
         if style == .strokeBorder || style == .fillWithStrokeBorder,  insetValue >= cornerRadius {
             print("cornerRadius 0으로 만든다")
             viewModel.update(\.cornerRadius, 0)

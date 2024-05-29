@@ -136,7 +136,78 @@ private extension ToolTipShape {
     func tailSizeOverBaseLine(in rect: CGRect) -> Path {
         print(#function)
         return Path { path in
+            let startPoint: CGPoint = getStartPointToSizeOverBaseLine(in: rect)
             
+            let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+            
+            path.move(to: startPoint)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + cornerRadius + insetValue),
+                        radius: cornerRadius - insetValue)
+            
+            
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+                                             y: rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - cornerRadius - insetValue,
+                                             y: rect.maxY - insetValue),
+                        radius: cornerRadius - insetValue)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
+                                             y: path.currentPoint?.y ?? rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.maxY - cornerRadius - insetValue),
+                        radius: cornerRadius - insetValue)
+            
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: startPoint,
+                        radius: cornerRadius - insetValue)
+            
+            path.closeSubpath()
+            
+//            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius - insetValue,
+//                                     y: rect.minY + insetValue))
+//            
+//            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
+//                                        y: rect.minY + cornerRadius),
+//                        radius: cornerRadius - insetValue,
+//                        startAngle: .degrees(270),
+//                        endAngle: .degrees(0),
+//                        clockwise: false)
+//            
+//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+//                                     y: rect.maxY - cornerRadius - insetValue))
+//            
+//            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
+//                                        y: rect.maxY - cornerRadius),
+//                        radius: cornerRadius - insetValue,
+//                        startAngle: .degrees(0),
+//                        endAngle: .degrees(90),
+//                        clockwise: false)
+//            
+//            path.addLine(to: CGPoint(x: rect.minX + cornerRadius + insetValue,
+//                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
+//            
+//            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
+//                                        y: rect.maxY - cornerRadius),
+//                        radius: cornerRadius - insetValue,
+//                        startAngle: .degrees(90),
+//                        endAngle: .degrees(180),
+//                        clockwise: false)
+//            
+//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+//                                     y: rect.minY + cornerRadius + insetValue))
+//            
+//            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
+//                                        y: rect.minY + cornerRadius),
+//                        radius: cornerRadius - insetValue,
+//                        startAngle: .degrees(180),
+//                        endAngle: .degrees(270),
+//                        clockwise: false)
+//
         }
     }
     
