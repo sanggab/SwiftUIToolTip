@@ -14,6 +14,7 @@ protocol PathProvidingProtocol {
 }
 
 protocol PathCalStartPointProtocol {
+    func getStartPointToFixed(in rect: CGRect) -> CGPoint
     func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint
     func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint

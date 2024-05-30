@@ -147,11 +147,11 @@
 		EFD5009D2BFC84450013B2DA /* SwiftUIToolTip */ = {
 			isa = PBXGroup;
 			children = (
+				EFD500A52BFC84450013B2DA /* Model */,
 				EF8ECA652C080409001F9479 /* Protocol */,
 				EFD500C12BFDCEDB0013B2DA /* ViewModel */,
 				EFD5009E2BFC84450013B2DA /* Extension */,
 				EFD500A02BFC84450013B2DA /* Modifier */,
-				EFD500A52BFC84450013B2DA /* Model */,
 			);
 			path = SwiftUIToolTip;
 			sourceTree = "<group>";

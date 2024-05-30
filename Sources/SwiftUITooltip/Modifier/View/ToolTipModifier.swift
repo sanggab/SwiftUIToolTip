@@ -28,6 +28,8 @@ public struct ToolTipModifier: ViewModifier {
                     } else {
                         calStrokeStyle = model.strokeStyle
                     }
+                } else {
+                    calStrokeStyle = model.strokeStyle
                 }
             }
             .background(GeometryReader { proxy in

@@ -21,11 +21,11 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 2).strokeBorder(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
             }
             .toolTip {
-                ToolTipModel(style: .strokeBorder,
+                ToolTipModel(style: .stroke,
                              mode: .flexible,
                              tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .top,
-                             tailAlignment: .leading,
+                             tailAlignment: .center,
                              cornerRadius: 2,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),

@@ -110,3 +110,19 @@ public struct ToolTipModel: Equatable {
     }
 }
 
+public extension ToolTipModel {
+    var isStrokeBorder: Bool {
+        switch self.style {
+        case .fill:
+            return false
+        case .stroke:
+            return false
+        case .strokeBorder:
+            return true
+        case .fillWithStroke:
+            return false
+        case .fillWithStrokeBorder:
+            return true
+        }
+    }
+}

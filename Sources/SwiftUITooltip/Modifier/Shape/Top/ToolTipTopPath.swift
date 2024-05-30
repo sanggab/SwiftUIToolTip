@@ -18,10 +18,47 @@ struct ToolTipTopPath: PathFeatures {
     }
 }
 
+// MARK: Decide Path
 extension ToolTipTopPath {
     func fixedPath(in rect: CGRect) -> Path {
         Path { path in
+            let startPoint = getStartPointToFixed(in: rect)
+            let tailSize = viewModel(\.tailSize)
+            let cornerRadius = viewModel(\.cornerRadius)
+            let radius = max(0, cornerRadius - insetValue)
             
+            path.move(to: startPoint)
+            
+            path.addLine(to: CGPoint(x: startPoint.x + (tailSize.width / 2),
+                                     y: startPoint.y - tailSize.height))
+            
+            path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2),
+                                     y: startPoint.y))
+            
+            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + cornerRadius + insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+                                             y: rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - cornerRadius - insetValue,
+                                             y: rect.maxY - insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
+                                             y: path.currentPoint?.y ?? rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.maxY - cornerRadius - insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: startPoint,
+                        radius: radius)
+            
+            path.closeSubpath()
         }
     }
     
@@ -44,6 +81,7 @@ extension ToolTipTopPath {
     }
 }
 
+// MARK: TailSize Not Over Path
 extension ToolTipTopPath {
     func tailSizeNotOverBaseLine(in rect: CGRect) -> Path {
         print(#function)
@@ -51,6 +89,7 @@ extension ToolTipTopPath {
             let startPoint: CGPoint = getStartPointToBaseLine(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)
             let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+            let radius = max(0, cornerRadius - insetValue)
             
             path.move(to: startPoint)
             
@@ -60,45 +99,31 @@ extension ToolTipTopPath {
             path.addLine(to: CGPoint(x: (path.currentPoint?.x ?? 0) + (tailSize.width / 2),
                                      y: startPoint.y))
             
-            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius,
+            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius - insetValue,
                                      y: rect.minY + insetValue))
             
-            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
-                                        y: rect.minY + cornerRadius),
-                        radius: cornerRadius - insetValue,
-                        startAngle: .degrees(270),
-                        endAngle: .degrees(0),
-                        clockwise: false)
+            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + cornerRadius + insetValue),
+                        radius: radius)
             
-            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
-                                     y: rect.maxY - cornerRadius))
-
-            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
-                                        y: rect.maxY - cornerRadius),
-                        radius: cornerRadius - insetValue,
-                        startAngle: .degrees(0),
-                        endAngle: .degrees(90),
-                        clockwise: false)
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
+                                             y: rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - cornerRadius - insetValue,
+                                             y: rect.maxY - insetValue),
+                        radius: radius)
             
-            path.addLine(to: CGPoint(x: rect.minX + cornerRadius,
-                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
+            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
+                                             y: path.currentPoint?.y ?? rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.maxY - cornerRadius - insetValue),
+                        radius: radius)
             
-            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
-                                        y: rect.maxY - cornerRadius),
-                        radius: cornerRadius - insetValue,
-                        startAngle: .degrees(90),
-                        endAngle: .degrees(180),
-                        clockwise: false)
-            
-            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? (rect.minX + insetValue),
-                                     y: rect.minY + cornerRadius))
-            
-            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
-                                        y: rect.minY + cornerRadius),
-                        radius: cornerRadius - insetValue,
-                        startAngle: .degrees(180),
-                        endAngle: .degrees(270),
-                        clockwise: false)
+            path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: startPoint,
+                        radius: radius)
             
             path.closeSubpath()
         }
@@ -139,6 +164,7 @@ extension ToolTipTopPath {
     }
 }
 
+// MARK: TailSize Over Path
 extension ToolTipTopPath {
     func tailSizeOverBaseLine(in rect: CGRect) -> Path {
         print(#function)
@@ -146,6 +172,7 @@ extension ToolTipTopPath {
             let startPoint: CGPoint = getStartPointToSizeOverBaseLine(in: rect)
             
             let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+            let radius = max(0, cornerRadius - insetValue)
             
             path.move(to: startPoint)
             
@@ -153,25 +180,25 @@ extension ToolTipTopPath {
                                              y: rect.minY + insetValue),
                         tangent2End: CGPoint(x: rect.maxX - insetValue,
                                              y: rect.minY + cornerRadius + insetValue),
-                        radius: cornerRadius - insetValue)
+                        radius: radius)
             
             
             path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
                                              y: rect.maxY - insetValue),
                         tangent2End: CGPoint(x: rect.maxX - cornerRadius - insetValue,
                                              y: rect.maxY - insetValue),
-                        radius: cornerRadius - insetValue)
+                        radius: radius)
             
             path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
                                              y: path.currentPoint?.y ?? rect.maxY - insetValue),
                         tangent2End: CGPoint(x: rect.minX + insetValue,
                                              y: rect.maxY - cornerRadius - insetValue),
-                        radius: cornerRadius - insetValue)
+                        radius: radius)
             
             path.addArc(tangent1End: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
                                              y: rect.minY + insetValue),
                         tangent2End: startPoint,
-                        radius: cornerRadius - insetValue)
+                        radius: radius)
             
             path.closeSubpath()
         }

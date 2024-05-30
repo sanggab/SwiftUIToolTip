@@ -7,8 +7,8 @@
 
 import SwiftUI
 
+// MARK: calculate CornerRadius
 extension ToolTipTopPath {
-    
     func calCornerRadius(in rect: CGRect) {
         print("=======================================")
         print("resetCornenRadius rect : \(rect)")
@@ -58,10 +58,13 @@ extension ToolTipTopPath {
         
         print("계산끝난 cornerRadius : \(viewModel(\.cornerRadius))")
     }
-    
-    func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
+}
+
+extension ToolTipTopPath {
+    func getStartPointToFixed(in rect: CGRect) -> CGPoint {
         print(#function)
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        let tailSize: CGSize = viewModel(\.tailSize)
         
         var startPoint: CGPoint = .zero
         
@@ -73,35 +76,18 @@ extension ToolTipTopPath {
             
         case .center:
             print("center")
-            
-        case .trailing:
-            print("trailing")
-            
-        case .custom(let length):
-            print("custom length : \(length)")
-        }
-     
-        print("startPoint : \(startPoint)")
-        return startPoint
-    }
-    
-    func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint {
-        print(#function)
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("leading")
-            startPoint = CGPoint(x: rect.minX + insetValue,
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
                                  y: rect.minY + insetValue)
-        case .center:
-            print("center")
             
         case .trailing:
             print("trailing")
+            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue,
+                                 y: rect.minY + insetValue)
             
         case .custom(let length):
             print("custom length : \(length)")
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + length,
+                                 y: rect.minY + insetValue)
         }
      
         print("startPoint : \(startPoint)")
@@ -109,6 +95,7 @@ extension ToolTipTopPath {
     }
 }
 
+// MARK: TailSize Not Over StartPoint
 extension ToolTipTopPath {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
@@ -195,6 +182,40 @@ extension ToolTipTopPath {
                                      y: rect.minY + insetValue)
                 
             }
+        }
+     
+        print("startPoint : \(startPoint)")
+        return startPoint
+    }
+}
+
+// MARK: TailSize Over StartPoint
+extension ToolTipTopPath {
+    func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .leading, .center, .trailing, .custom:
+            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
+                                 y: rect.minY + insetValue)
+        }
+     
+        print("startPoint : \(startPoint)")
+        return startPoint
+    }
+    
+    func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint {
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .leading, .center, .trailing, .custom:
+            print("leading")
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + insetValue)
         }
      
         print("startPoint : \(startPoint)")

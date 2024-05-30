@@ -14,6 +14,13 @@ extension ToolTipLeadingPath {
     }
 }
 
+// MARK: Fixed Mode Start Point
+extension ToolTipLeadingPath {
+    func getStartPointToFixed(in rect: CGRect) -> CGPoint {
+        return .zero
+    }
+}
+
 // MARK: TailSize Not Over StartPoint
 extension ToolTipLeadingPath {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {

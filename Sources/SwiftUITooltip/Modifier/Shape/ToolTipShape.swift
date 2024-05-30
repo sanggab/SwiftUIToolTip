@@ -10,19 +10,19 @@ import SwiftUI
 public struct ToolTipShape: Shape, InsettableShape {
     @Environment(\.layoutDirection) private var layoutDirection
     
-    public var model: ToolTipModel
-    
     @ObservedObject var viewModel: ToolTipViewModel
     
     @State var provider: PathProvidingProtocol?
+    
+    public var model: ToolTipModel
+    
+    public var insetValue: CGFloat = 0
     
     public init(model: ToolTipModel) {
         self.model = model
         viewModel = ToolTipViewModel(model: model)
         _provider = State(wrappedValue: getPathProviding())
     }
-    
-    public var insetValue: CGFloat = 0
     
     public func path(in rect: CGRect) -> Path {
         switch model.tailPosition {
@@ -53,10 +53,12 @@ public struct ToolTipShape: Shape, InsettableShape {
     }
     
     func getPathProviding() -> PathProvidingProtocol {
+        let insetValue = model.isStrokeBorder ? max(insetValue, viewModel(\.strokeStyle).lineWidth / 2) : .zero
+        
         if viewModel(\.tailPosition) == .top {
-            return ToolTipTopPath(viewModel: viewModel, insetValue: max(insetValue, viewModel(\.strokeStyle).lineWidth / 2))
+            return ToolTipTopPath(viewModel: viewModel, insetValue: insetValue)
         } else {
-            return ToolTipBottomPath(viewModel: viewModel, insetValue: max(insetValue, viewModel(\.strokeStyle).lineWidth / 2))
+            return ToolTipBottomPath(viewModel: viewModel, insetValue: insetValue)
         }
     }
     
