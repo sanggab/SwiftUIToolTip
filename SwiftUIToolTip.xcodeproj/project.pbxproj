@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */; };
-		EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */; };
-		EF32F7BB2C00562B00B2346F /* TopFlexiblePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */; };
 		EF8ECA642C07FF85001F9479 /* ToolTipTopPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */; };
 		EF8ECA672C08040F001F9479 /* ToolTipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA662C08040F001F9479 /* ToolTipProtocol.swift */; };
+		EF8ECA692C080F4B001F9479 /* ToolTipBottomPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA682C080F4B001F9479 /* ToolTipBottomPath.swift */; };
+		EF8ECA6B2C08390A001F9479 /* ToolTipTopPath + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA6A2C08390A001F9479 /* ToolTipTopPath + Helper.swift */; };
+		EF8ECA6D2C083B1C001F9479 /* ToolTipLeadingPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA6C2C083B1C001F9479 /* ToolTipLeadingPath.swift */; };
+		EF8ECA6F2C083B23001F9479 /* ToolTipTrailingPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA6E2C083B23001F9479 /* ToolTipTrailingPath.swift */; };
+		EF8ECA712C083D87001F9479 /* ToolTipTrailingPath + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA702C083D87001F9479 /* ToolTipTrailingPath + Helper.swift */; };
+		EF8ECA732C083D91001F9479 /* ToolTipLeadingPath + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA722C083D91001F9479 /* ToolTipLeadingPath + Helper.swift */; };
+		EF8ECA752C083D9E001F9479 /* ToolTipBottomPath + Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA742C083D9E001F9479 /* ToolTipBottomPath + Helper.swift */; };
 		EFD5008C2BFC84200013B2DA /* SwiftUIToolTip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */; };
 		EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD5009F2BFC84450013B2DA /* ViewExtension.swift */; };
 		EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A22BFC84450013B2DA /* ToolTipShape.swift */; };
 		EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A42BFC84450013B2DA /* ToolTipModifier.swift */; };
 		EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A62BFC84450013B2DA /* ToolTipModel.swift */; };
 		EFD500B32BFC85180013B2DA /* SwiftUIToolTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */; };
-		EFD500BC2BFDC7620013B2DA /* ToolTipShape + Leading.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */; };
-		EFD500BE2BFDC7790013B2DA /* ToolTipShape + Trailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */; };
-		EFD500C02BFDC7810013B2DA /* ToolTipShape + Bottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */; };
 		EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500C22BFDCEE60013B2DA /* ToolTipViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,11 +36,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFixedPath.swift; sourceTree = "<group>"; };
-		EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPathHelper.swift; sourceTree = "<group>"; };
-		EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFlexiblePath.swift; sourceTree = "<group>"; };
 		EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipTopPath.swift; sourceTree = "<group>"; };
 		EF8ECA662C08040F001F9479 /* ToolTipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipProtocol.swift; sourceTree = "<group>"; };
+		EF8ECA682C080F4B001F9479 /* ToolTipBottomPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipBottomPath.swift; sourceTree = "<group>"; };
+		EF8ECA6A2C08390A001F9479 /* ToolTipTopPath + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipTopPath + Helper.swift"; sourceTree = "<group>"; };
+		EF8ECA6C2C083B1C001F9479 /* ToolTipLeadingPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipLeadingPath.swift; sourceTree = "<group>"; };
+		EF8ECA6E2C083B23001F9479 /* ToolTipTrailingPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipTrailingPath.swift; sourceTree = "<group>"; };
+		EF8ECA702C083D87001F9479 /* ToolTipTrailingPath + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipTrailingPath + Helper.swift"; sourceTree = "<group>"; };
+		EF8ECA722C083D91001F9479 /* ToolTipLeadingPath + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipLeadingPath + Helper.swift"; sourceTree = "<group>"; };
+		EF8ECA742C083D9E001F9479 /* ToolTipBottomPath + Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipBottomPath + Helper.swift"; sourceTree = "<group>"; };
 		EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIToolTip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5008B2BFC84200013B2DA /* SwiftUIToolTipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIToolTipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5009F2BFC84450013B2DA /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -47,9 +52,6 @@
 		EFD500A42BFC84450013B2DA /* ToolTipModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipModifier.swift; sourceTree = "<group>"; };
 		EFD500A62BFC84450013B2DA /* ToolTipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipModel.swift; sourceTree = "<group>"; };
 		EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIToolTipTests.swift; sourceTree = "<group>"; };
-		EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Leading.swift"; sourceTree = "<group>"; };
-		EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Trailing.swift"; sourceTree = "<group>"; };
-		EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTipShape + Bottom.swift"; sourceTree = "<group>"; };
 		EFD500C22BFDCEE60013B2DA /* ToolTipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,10 +77,8 @@
 		EF32F7B22C00557100B2346F /* Top */ = {
 			isa = PBXGroup;
 			children = (
-				EF32F7BE2C00564800B2346F /* Helper */,
-				EF32F7BC2C00563E00B2346F /* Fixed */,
-				EF32F7BD2C00564100B2346F /* Flexible */,
 				EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */,
+				EF8ECA6A2C08390A001F9479 /* ToolTipTopPath + Helper.swift */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -86,7 +86,8 @@
 		EF32F7B32C00559200B2346F /* Leading */ = {
 			isa = PBXGroup;
 			children = (
-				EFD500BB2BFDC7620013B2DA /* ToolTipShape + Leading.swift */,
+				EF8ECA6C2C083B1C001F9479 /* ToolTipLeadingPath.swift */,
+				EF8ECA722C083D91001F9479 /* ToolTipLeadingPath + Helper.swift */,
 			);
 			path = Leading;
 			sourceTree = "<group>";
@@ -94,7 +95,8 @@
 		EF32F7B42C00559600B2346F /* Trailing */ = {
 			isa = PBXGroup;
 			children = (
-				EFD500BD2BFDC7790013B2DA /* ToolTipShape + Trailing.swift */,
+				EF8ECA6E2C083B23001F9479 /* ToolTipTrailingPath.swift */,
+				EF8ECA702C083D87001F9479 /* ToolTipTrailingPath + Helper.swift */,
 			);
 			path = Trailing;
 			sourceTree = "<group>";
@@ -102,33 +104,10 @@
 		EF32F7B52C00559A00B2346F /* Bottom */ = {
 			isa = PBXGroup;
 			children = (
-				EFD500BF2BFDC7810013B2DA /* ToolTipShape + Bottom.swift */,
+				EF8ECA682C080F4B001F9479 /* ToolTipBottomPath.swift */,
+				EF8ECA742C083D9E001F9479 /* ToolTipBottomPath + Helper.swift */,
 			);
 			path = Bottom;
-			sourceTree = "<group>";
-		};
-		EF32F7BC2C00563E00B2346F /* Fixed */ = {
-			isa = PBXGroup;
-			children = (
-				EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */,
-			);
-			path = Fixed;
-			sourceTree = "<group>";
-		};
-		EF32F7BD2C00564100B2346F /* Flexible */ = {
-			isa = PBXGroup;
-			children = (
-				EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */,
-			);
-			path = Flexible;
-			sourceTree = "<group>";
-		};
-		EF32F7BE2C00564800B2346F /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		EF8ECA652C080409001F9479 /* Protocol */ = {
@@ -355,19 +334,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFD500BE2BFDC7790013B2DA /* ToolTipShape + Trailing.swift in Sources */,
+				EF8ECA6D2C083B1C001F9479 /* ToolTipLeadingPath.swift in Sources */,
 				EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */,
 				EF8ECA642C07FF85001F9479 /* ToolTipTopPath.swift in Sources */,
-				EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */,
-				EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */,
-				EFD500C02BFDC7810013B2DA /* ToolTipShape + Bottom.swift in Sources */,
-				EFD500BC2BFDC7620013B2DA /* ToolTipShape + Leading.swift in Sources */,
+				EF8ECA732C083D91001F9479 /* ToolTipLeadingPath + Helper.swift in Sources */,
+				EF8ECA6B2C08390A001F9479 /* ToolTipTopPath + Helper.swift in Sources */,
 				EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */,
 				EF8ECA672C08040F001F9479 /* ToolTipProtocol.swift in Sources */,
+				EF8ECA712C083D87001F9479 /* ToolTipTrailingPath + Helper.swift in Sources */,
+				EF8ECA752C083D9E001F9479 /* ToolTipBottomPath + Helper.swift in Sources */,
+				EF8ECA692C080F4B001F9479 /* ToolTipBottomPath.swift in Sources */,
 				EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */,
 				EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */,
+				EF8ECA6F2C083B23001F9479 /* ToolTipTrailingPath.swift in Sources */,
 				EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */,
-				EF32F7BB2C00562B00B2346F /* TopFlexiblePath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

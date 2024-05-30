@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToolTipTopPath: PathFeatures {
     @ObservedObject var viewModel: ToolTipViewModel
-    private var insetValue: CGFloat
+    var insetValue: CGFloat
     
     init(viewModel: ToolTipViewModel,
          insetValue: CGFloat) {
@@ -135,18 +135,6 @@ extension ToolTipTopPath {
             
             path.addLine(to: CGPoint(x: rect.minX + insetValue,
                                      y: rect.minY))
-            
-//            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
-//                                     y: rect.minY + insetValue))
-//
-//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
-//                                     y: rect.maxY - insetValue))
-//
-//            path.addLine(to: CGPoint(x: rect.minX + insetValue,
-//                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
-//
-//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
-//                                     y: rect.minY))
         }
     }
 }
@@ -186,47 +174,6 @@ extension ToolTipTopPath {
                         radius: cornerRadius - insetValue)
             
             path.closeSubpath()
-            
-//            path.addLine(to: CGPoint(x: rect.maxX - cornerRadius - insetValue,
-//                                     y: rect.minY + insetValue))
-//
-//            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
-//                                        y: rect.minY + cornerRadius),
-//                        radius: cornerRadius - insetValue,
-//                        startAngle: .degrees(270),
-//                        endAngle: .degrees(0),
-//                        clockwise: false)
-//
-//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.maxX - insetValue,
-//                                     y: rect.maxY - cornerRadius - insetValue))
-//
-//            path.addArc(center: CGPoint(x: rect.maxX - cornerRadius,
-//                                        y: rect.maxY - cornerRadius),
-//                        radius: cornerRadius - insetValue,
-//                        startAngle: .degrees(0),
-//                        endAngle: .degrees(90),
-//                        clockwise: false)
-//
-//            path.addLine(to: CGPoint(x: rect.minX + cornerRadius + insetValue,
-//                                     y: path.currentPoint?.y ?? rect.maxY - insetValue))
-//
-//            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
-//                                        y: rect.maxY - cornerRadius),
-//                        radius: cornerRadius - insetValue,
-//                        startAngle: .degrees(90),
-//                        endAngle: .degrees(180),
-//                        clockwise: false)
-//
-//            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? rect.minX + insetValue,
-//                                     y: rect.minY + cornerRadius + insetValue))
-//
-//            path.addArc(center: CGPoint(x: rect.minX + cornerRadius,
-//                                        y: rect.minY + cornerRadius),
-//                        radius: cornerRadius - insetValue,
-//                        startAngle: .degrees(180),
-//                        endAngle: .degrees(270),
-//                        clockwise: false)
-//
         }
     }
     
@@ -252,149 +199,5 @@ extension ToolTipTopPath {
             
             path.closeSubpath()
         }
-    }
-}
-
-extension ToolTipTopPath {
-    func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
-        print(#function)
-        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
-        
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("leading")
-            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
-                                 y: rect.minY + insetValue)
-            
-        case .center:
-            print("center")
-            
-        case .trailing:
-            print("trailing")
-            
-        case .custom(let length):
-            print("custom length : \(length)")
-        }
-     
-        print("startPoint : \(startPoint)")
-        return startPoint
-    }
-    
-    func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint {
-        print(#function)
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("leading")
-            startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + insetValue)
-        case .center:
-            print("center")
-            
-        case .trailing:
-            print("trailing")
-            
-        case .custom(let length):
-            print("custom length : \(length)")
-        }
-     
-        print("startPoint : \(startPoint)")
-        return startPoint
-    }
-}
-
-extension ToolTipTopPath {
-    func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
-        print(#function)
-        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
-        let tailSize: CGSize = viewModel(\.tailSize)
-        
-        var startPoint: CGPoint = .zero
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("leading")
-            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
-                                 y: rect.minY + insetValue)
-            
-        case .center:
-            print("center")
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
-                                 y: rect.minY + insetValue)
-            
-        case .trailing:
-            print("trailing")
-            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue,
-                                 y: rect.minY + insetValue)
-            
-        case .custom(let length):
-            print("custom length : \(length)")
-            if length >= 0 {
-                let maxPoint = rect.maxX - cornerRadius - tailSize.width - insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: min(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-                
-            } else {
-                let maxPoint = rect.minX + cornerRadius + insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: max(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-                
-            }
-        }
-     
-        print("startPoint : \(startPoint)")
-        return startPoint
-    }
-    
-    func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
-        print(#function)
-        var startPoint: CGPoint = .zero
-        let tailSize: CGSize = viewModel(\.tailSize)
-        
-        switch viewModel(\.tailAlignment) {
-        case .leading:
-            print("leading")
-            startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + insetValue)
-            
-        case .center:
-            print("center")
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
-                                 y: rect.minY + insetValue)
-            
-        case .trailing:
-            print("trailing")
-            
-            startPoint = CGPoint(x: rect.maxX - tailSize.width - insetValue,
-                                 y: rect.minY + insetValue)
-            
-        case .custom(let length):
-            print("custom length : \(length)")
-            if length >= 0 {
-                let maxPoint = rect.maxX - tailSize.width - insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: min(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-                
-            } else {
-                let maxPoint = rect.minX + insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: max(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-                
-            }
-        }
-     
-        print("startPoint : \(startPoint)")
-        return startPoint
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 protocol PathProvidingProtocol {
     func fixedPath(in rect: CGRect) -> Path
     func flexiblePath(in rect: CGRect) -> Path
+    func calCornerRadius(in rect: CGRect)
 }
 
 protocol PathCalStartPointProtocol {

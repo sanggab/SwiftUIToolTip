@@ -25,13 +25,13 @@ struct ContentView: View {
                              mode: .flexible,
                              tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .top,
-                             tailAlignment: .custom(5),
-                             cornerRadius: 1,
+                             tailAlignment: .leading,
+                             cornerRadius: 2,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),
-                             strokeStyle: StrokeStyle(lineWidth: 3,
+                             strokeStyle: StrokeStyle(lineWidth: 4,
                                                       lineCap: .round,
-                                                      lineJoin: .miter))
+                                                      lineJoin: .round))
             }
     }
 }
