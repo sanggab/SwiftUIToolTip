@@ -23,7 +23,7 @@ public struct ToolTipModifier: ViewModifier {
                 if model.style == .strokeBorder || model.style == .fillWithStrokeBorder {
                     if model.strokeStyle.lineWidth / 2 >= model.cornerRadius, model.strokeStyle.lineJoin == .miter {
                         var newStyle = model.strokeStyle
-                        newStyle.lineWidth = 0
+                        newStyle.lineCap = .butt
                         calStrokeStyle = newStyle
                     } else {
                         calStrokeStyle = model.strokeStyle

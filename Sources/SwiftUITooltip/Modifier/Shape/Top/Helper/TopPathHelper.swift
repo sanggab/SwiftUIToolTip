@@ -236,11 +236,26 @@ extension ToolTipShape {
             
         case .trailing:
             print("trailing")
-            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width,
+            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue,
                                  y: rect.minY + insetValue)
             
         case .custom(let length):
             print("custom length : \(length)")
+            if length >= 0 {
+                let maxPoint = rect.maxX - cornerRadius - tailSize.width - insetValue
+                let calPoint = rect.midX - (model.tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: min(maxPoint, calPoint),
+                                     y: rect.minY + insetValue)
+                
+            } else {
+                let maxPoint = rect.minX + cornerRadius + insetValue
+                let calPoint = rect.midX - (model.tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: max(maxPoint, calPoint),
+                                     y: rect.minY + insetValue)
+                
+            }
         }
      
         print("startPoint : \(startPoint)")
@@ -271,6 +286,21 @@ extension ToolTipShape {
             
         case .custom(let length):
             print("custom length : \(length)")
+            if length >= 0 {
+                let maxPoint = rect.maxX - tailSize.width - insetValue
+                let calPoint = rect.midX - (model.tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: min(maxPoint, calPoint),
+                                     y: rect.minY + insetValue)
+                
+            } else {
+                let maxPoint = rect.minX + insetValue
+                let calPoint = rect.midX - (model.tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: max(maxPoint, calPoint),
+                                     y: rect.minY + insetValue)
+                
+            }
         }
      
         print("startPoint : \(startPoint)")

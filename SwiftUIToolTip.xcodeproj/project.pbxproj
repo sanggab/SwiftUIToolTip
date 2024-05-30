@@ -10,6 +10,8 @@
 		EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */; };
 		EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */; };
 		EF32F7BB2C00562B00B2346F /* TopFlexiblePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */; };
+		EF8ECA642C07FF85001F9479 /* ToolTipTopPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */; };
+		EF8ECA672C08040F001F9479 /* ToolTipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8ECA662C08040F001F9479 /* ToolTipProtocol.swift */; };
 		EFD5008C2BFC84200013B2DA /* SwiftUIToolTip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */; };
 		EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD5009F2BFC84450013B2DA /* ViewExtension.swift */; };
 		EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A22BFC84450013B2DA /* ToolTipShape.swift */; };
@@ -36,6 +38,8 @@
 		EF32F7B62C0055CD00B2346F /* TopFixedPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFixedPath.swift; sourceTree = "<group>"; };
 		EF32F7B82C0055EE00B2346F /* TopPathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPathHelper.swift; sourceTree = "<group>"; };
 		EF32F7BA2C00562B00B2346F /* TopFlexiblePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFlexiblePath.swift; sourceTree = "<group>"; };
+		EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipTopPath.swift; sourceTree = "<group>"; };
+		EF8ECA662C08040F001F9479 /* ToolTipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipProtocol.swift; sourceTree = "<group>"; };
 		EFD500822BFC84200013B2DA /* SwiftUIToolTip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIToolTip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5008B2BFC84200013B2DA /* SwiftUIToolTipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIToolTipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5009F2BFC84450013B2DA /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 				EF32F7BE2C00564800B2346F /* Helper */,
 				EF32F7BC2C00563E00B2346F /* Fixed */,
 				EF32F7BD2C00564100B2346F /* Flexible */,
+				EF8ECA632C07FF85001F9479 /* ToolTipTopPath.swift */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -126,6 +131,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		EF8ECA652C080409001F9479 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EF8ECA662C08040F001F9479 /* ToolTipProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		EFD500592BFC83E40013B2DA = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +168,7 @@
 		EFD5009D2BFC84450013B2DA /* SwiftUIToolTip */ = {
 			isa = PBXGroup;
 			children = (
+				EF8ECA652C080409001F9479 /* Protocol */,
 				EFD500C12BFDCEDB0013B2DA /* ViewModel */,
 				EFD5009E2BFC84450013B2DA /* Extension */,
 				EFD500A02BFC84450013B2DA /* Modifier */,
@@ -343,11 +357,13 @@
 			files = (
 				EFD500BE2BFDC7790013B2DA /* ToolTipShape + Trailing.swift in Sources */,
 				EFD500A92BFC84450013B2DA /* ToolTipShape.swift in Sources */,
+				EF8ECA642C07FF85001F9479 /* ToolTipTopPath.swift in Sources */,
 				EF32F7B72C0055CD00B2346F /* TopFixedPath.swift in Sources */,
 				EF32F7B92C0055EE00B2346F /* TopPathHelper.swift in Sources */,
 				EFD500C02BFDC7810013B2DA /* ToolTipShape + Bottom.swift in Sources */,
 				EFD500BC2BFDC7620013B2DA /* ToolTipShape + Leading.swift in Sources */,
 				EFD500A82BFC84450013B2DA /* ViewExtension.swift in Sources */,
+				EF8ECA672C08040F001F9479 /* ToolTipProtocol.swift in Sources */,
 				EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */,
 				EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */,
 				EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */,

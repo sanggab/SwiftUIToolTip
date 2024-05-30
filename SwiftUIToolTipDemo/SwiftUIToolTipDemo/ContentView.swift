@@ -23,15 +23,15 @@ struct ContentView: View {
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 51, height: 10),
+                             tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .top,
-                             tailAlignment: .center,
-                             cornerRadius: 10,
+                             tailAlignment: .custom(5),
+                             cornerRadius: 1,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),
-                             strokeStyle: StrokeStyle(lineWidth: 2,
+                             strokeStyle: StrokeStyle(lineWidth: 3,
                                                       lineCap: .round,
-                                                      lineJoin: .round))
+                                                      lineJoin: .miter))
             }
     }
 }
