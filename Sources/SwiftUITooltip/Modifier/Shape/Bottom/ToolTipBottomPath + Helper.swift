@@ -77,14 +77,18 @@ extension ToolTipBottomPath {
             
         case .center:
             
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.maxY - insetValue)
             
         case .trailing:
             
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue,
+                                 y: rect.maxY - insetValue)
             
         case .custom(let length):
             print("custom length : \(length)")
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + length,
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
