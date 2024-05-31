@@ -22,7 +22,7 @@ struct ContentView: View {
             }
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
-                             mode: .fixed,
+                             mode: .flexible,
                              tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .bottom,
                              tailAlignment: .leading,
