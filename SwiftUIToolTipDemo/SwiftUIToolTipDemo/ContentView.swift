@@ -31,7 +31,7 @@ struct ContentView: View {
                              strokeColor: .pink.opacity(0.8),
                              strokeStyle: StrokeStyle(lineWidth: 4,
                                                       lineCap: .round,
-                                                      lineJoin: .round))
+                                                      lineJoin: .miter))
             }
     }
 }

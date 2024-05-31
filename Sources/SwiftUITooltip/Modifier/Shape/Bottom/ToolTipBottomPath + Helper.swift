@@ -155,18 +155,36 @@ extension ToolTipBottomPath {
         switch viewModel(\.tailAlignment) {
         case .leading:
             
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.maxY - insetValue)
             
         case .center:
             
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.maxY - insetValue)
             
         case .trailing:
             
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.maxX - tailSize.width - insetValue,
+                                 y: rect.maxY - insetValue)
             
         case .custom(let length):
             print("custom length : \(length)")
+            if length >= 0 {
+                let maxPoint = rect.maxX - tailSize.width - insetValue
+                let calPoint = rect.midX - (tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: min(maxPoint, calPoint),
+                                     y: rect.maxY - insetValue)
+                
+            } else {
+                let maxPoint = rect.minX + insetValue
+                let calPoint = rect.midX - (tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: max(maxPoint, calPoint),
+                                     y: rect.maxY - insetValue)
+                
+            }
         }
         
         print("startPoint : \(startPoint)")
