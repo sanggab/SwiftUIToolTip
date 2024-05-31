@@ -204,7 +204,7 @@ extension ToolTipBottomPath {
         switch viewModel(\.tailAlignment) {
         case .leading, .center, .trailing, .custom:
             startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
-                                 y: rect.minY + insetValue)
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
@@ -218,9 +218,8 @@ extension ToolTipBottomPath {
         
         switch viewModel(\.tailAlignment) {
         case .leading, .center, .trailing, .custom:
-            print("leading")
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + insetValue)
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
