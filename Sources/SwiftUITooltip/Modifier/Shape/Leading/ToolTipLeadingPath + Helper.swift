@@ -63,28 +63,121 @@ extension ToolTipLeadingPath {
 // MARK: Fixed Mode Start Point
 extension ToolTipLeadingPath {
     func getStartPointToFixed(in rect: CGRect) -> CGPoint {
-        return .zero
+        print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        let tailSize: CGSize = viewModel(\.tailSize)
+        
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .top:
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + cornerRadius + insetValue )
+        case .center:
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
+        case .bottom:
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.maxY - cornerRadius - tailSize.width - insetValue)
+        case .custom(let length):
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2) + length)
+        default:
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
+        }
+        
+        print("startPoint : \(startPoint)")
+        return startPoint
     }
 }
 
 // MARK: TailSize Not Over StartPoint
 extension ToolTipLeadingPath {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
-        return .zero
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .top:
+            startPoint = .zero
+        case .center:
+            startPoint = .zero
+        case .bottom:
+            startPoint = .zero
+        case .custom(let length):
+            startPoint = .zero
+        default:
+            startPoint = .zero
+        }
+        
+        print("startPoint : \(startPoint)")
+        return startPoint
     }
     
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
-        return .zero
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .top:
+            startPoint = .zero
+        case .center:
+            startPoint = .zero
+        case .bottom:
+            startPoint = .zero
+        case .custom(let length):
+            startPoint = .zero
+        default:
+            startPoint = .zero
+        }
+        
+        print("startPoint : \(startPoint)")
+        return startPoint
     }
 }
 
 // MARK: TailSize Over StartPoint
 extension ToolTipLeadingPath {
     func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
-        return .zero
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .top:
+            startPoint = .zero
+        case .center:
+            startPoint = .zero
+        case .bottom:
+            startPoint = .zero
+        case .custom(let length):
+            startPoint = .zero
+        default:
+            startPoint = .zero
+        }
+        
+        print("startPoint : \(startPoint)")
+        return startPoint
     }
     
     func getStartPointToSizeOverLimitBaseLine(in rect: CGRect) -> CGPoint {
-        return .zero
+        print(#function)
+        var startPoint: CGPoint = .zero
+        
+        switch viewModel(\.tailAlignment) {
+        case .top:
+            startPoint = .zero
+        case .center:
+            startPoint = .zero
+        case .bottom:
+            startPoint = .zero
+        case .custom(let length):
+            startPoint = .zero
+        default:
+            startPoint = .zero
+        }
+        
+        print("startPoint : \(startPoint)")
+        return startPoint
     }
 }

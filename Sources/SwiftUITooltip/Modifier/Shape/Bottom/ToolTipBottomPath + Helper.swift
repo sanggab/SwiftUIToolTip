@@ -89,6 +89,9 @@ extension ToolTipBottomPath {
             print("custom length : \(length)")
             startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + length,
                                  y: rect.maxY - insetValue)
+        default:
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
@@ -139,6 +142,9 @@ extension ToolTipBottomPath {
                                      y: rect.maxY - insetValue)
                 
             }
+        default:
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
@@ -185,6 +191,9 @@ extension ToolTipBottomPath {
                                      y: rect.maxY - insetValue)
                 
             }
+        default:
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+                                 y: rect.maxY - insetValue)
         }
         
         print("startPoint : \(startPoint)")
@@ -202,7 +211,7 @@ extension ToolTipBottomPath {
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .leading, .center, .trailing, .custom:
+        case .leading, .center, .trailing, .custom, .top, .bottom:
             startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
                                  y: rect.maxY - insetValue)
         }
@@ -217,7 +226,7 @@ extension ToolTipBottomPath {
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .leading, .center, .trailing, .custom:
+        case .leading, .center, .trailing, .custom, .top, .bottom:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.maxY - insetValue)
         }

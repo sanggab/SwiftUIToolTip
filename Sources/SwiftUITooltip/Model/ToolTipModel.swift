@@ -41,6 +41,10 @@ public enum TailAlignment: Equatable {
     
     case trailing
     
+    case top
+    
+    case bottom
+    
     case custom(CGFloat)
 }
 
