@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct ToolTipTrailingPath: PathFeatures {
+    @ObservedObject var viewModel: ToolTipViewModel
+    var insetValue: CGFloat
     
+    init(viewModel: ToolTipViewModel,
+         insetValue: CGFloat) {
+        self.viewModel = viewModel
+        self.insetValue = insetValue
+    }
 }
 
 // MARK: Decide Path

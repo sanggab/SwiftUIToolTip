@@ -145,8 +145,9 @@ extension ToolTipTopPath {
     
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
-        var startPoint: CGPoint = .zero
         let tailSize: CGSize = viewModel(\.tailSize)
+        
+        var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .leading:
