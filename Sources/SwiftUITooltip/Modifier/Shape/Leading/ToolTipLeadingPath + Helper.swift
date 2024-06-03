@@ -96,19 +96,39 @@ extension ToolTipLeadingPath {
 extension ToolTipLeadingPath {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        let tailSize: CGSize = viewModel(\.tailSize)
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .top:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + cornerRadius + insetValue)
         case .center:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
         case .bottom:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.maxY - cornerRadius - tailSize.width - insetValue)
         case .custom(let length):
-            startPoint = .zero
+            if length >= 0 {
+                let maxPoint = rect.maxY - cornerRadius - tailSize.width - insetValue
+                let calPoint = rect.midY - (tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: rect.minX + insetValue,
+                                     y: min(maxPoint, calPoint))
+                
+            } else {
+                let maxPoint = rect.minY + cornerRadius + insetValue
+                let calPoint = rect.midY - (tailSize.width / 2) + length
+
+                startPoint = CGPoint(x: rect.minX + insetValue,
+                                     y: max(maxPoint, calPoint))
+            }
         default:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
         }
         
         print("startPoint : \(startPoint)")
@@ -117,19 +137,38 @@ extension ToolTipLeadingPath {
     
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
+        let tailSize: CGSize = viewModel(\.tailSize)
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .top:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + insetValue)
         case .center:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
         case .bottom:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.maxY - tailSize.width - insetValue)
         case .custom(let length):
-            startPoint = .zero
+            if length >= 0 {
+                let maxPoint = rect.maxY - tailSize.width - insetValue
+                let calPoint = rect.midY - (tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: rect.minX + insetValue,
+                                     y: min(maxPoint, calPoint))
+                
+            } else {
+                let maxPoint = rect.minY + insetValue
+                let calPoint = rect.midY - (tailSize.width / 2) + length
+                
+                startPoint = CGPoint(x: rect.minX + insetValue,
+                                     y: max(maxPoint, calPoint))
+            }
         default:
-            startPoint = .zero
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.midY - (tailSize.width / 2))
         }
         
         print("startPoint : \(startPoint)")

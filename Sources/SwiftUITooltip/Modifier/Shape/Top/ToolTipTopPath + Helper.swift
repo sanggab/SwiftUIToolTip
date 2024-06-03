@@ -168,7 +168,6 @@ extension ToolTipTopPath {
             
         case .trailing:
             print("trailing")
-            
             startPoint = CGPoint(x: rect.maxX - tailSize.width - insetValue,
                                  y: rect.minY + insetValue)
             
@@ -187,7 +186,6 @@ extension ToolTipTopPath {
                 
                 startPoint = CGPoint(x: max(maxPoint, calPoint),
                                      y: rect.minY + insetValue)
-                
             }
         default:
             startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),

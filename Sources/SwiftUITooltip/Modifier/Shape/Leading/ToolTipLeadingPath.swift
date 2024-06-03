@@ -66,23 +66,21 @@ extension ToolTipLeadingPath {
     
     func flexiblePath(in rect: CGRect) -> Path {
         print(#function)
-        return Path { path in
-            
-        }
+        return viewModel(\.canDrawTail) ? getPathToTailSizeNotOver(in: rect) : getPathToTailSizeOver(in: rect)
     }
     
     func getPathToTailSizeNotOver(in rect: CGRect) -> Path {
         print(#function)
-        return Path { path in
-            
-        }
+        return viewModel(\.limitBaseLine) ?
+        tailSizeNotOverLimitBaseLine(in: rect) :
+        tailSizeNotOverBaseLine(in: rect)
     }
     
     func getPathToTailSizeOver(in rect: CGRect) -> Path {
         print(#function)
-        return Path { path in
-            
-        }
+        return viewModel(\.limitBaseLine) ?
+        tailSizeOverLimitBaseLine(in: rect) :
+        tailSizeOverBaseLine(in: rect)
     }
 }
 
@@ -91,14 +89,81 @@ extension ToolTipLeadingPath {
     func tailSizeNotOverBaseLine(in rect: CGRect) -> Path {
         print(#function)
         return Path { path in
+            let startPoint: CGPoint = getStartPointToBaseLine(in: rect)
+            let tailSize: CGSize = viewModel(\.tailSize)
+            let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+            let radius = max(0, cornerRadius - insetValue)
             
+            path.move(to: startPoint)
+            
+            path.addLine(to: CGPoint(x: startPoint.x - tailSize.height,
+                                     y: startPoint.y + (tailSize.width / 2)))
+            
+            path.addLine(to: CGPoint(x: startPoint.x,
+                                     y: (path.currentPoint?.y ?? 0) + (tailSize.width / 2)))
+            
+            path.addLine(to: CGPoint(x: startPoint.x,
+                                     y: rect.maxY - cornerRadius - insetValue))
+            
+            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.minX + cornerRadius + insetValue,
+                                             y: rect.maxY - insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.maxY - insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.maxY - cornerRadius - insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.maxX - insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: CGPoint(x: rect.maxX - cornerRadius - insetValue,
+                                             y: rect.minY + insetValue),
+                        radius: radius)
+            
+            path.addArc(tangent1End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.minY + insetValue),
+                        tangent2End: CGPoint(x: rect.minX + insetValue,
+                                             y: rect.minY + cornerRadius + insetValue),
+                        radius: radius)
+            
+            path.closeSubpath()
         }
     }
     
     func tailSizeNotOverLimitBaseLine(in rect: CGRect) -> Path {
         print(#function)
         return Path { path in
+            let startPoint: CGPoint = getStartPointToLimitBaseLine(in: rect)
+            let tailSize: CGSize = viewModel(\.tailSize)
             
+            path.move(to: CGPoint(x: rect.minX + insetValue,
+                                  y: rect.minY + insetValue))
+            
+            path.addLine(to: startPoint)
+            
+            path.addLine(to: CGPoint(x: startPoint.x - tailSize.height,
+                                     y: startPoint.y + (tailSize.width / 2)))
+            
+            path.addLine(to: CGPoint(x: startPoint.x,
+                                     y: (path.currentPoint?.y ?? 0) + (tailSize.width / 2)))
+            
+            path.addLine(to: CGPoint(x: rect.minX + insetValue,
+                                     y: rect.maxY))
+            
+            path.move(to: CGPoint(x: rect.minX + insetValue,
+                                  y: rect.maxY - insetValue))
+            
+            path.addLine(to: CGPoint(x: rect.maxX - insetValue,
+                                     y: path.currentPoint?.y ?? 0))
+            
+            path.addLine(to: CGPoint(x: path.currentPoint?.x ?? 0,
+                                     y: rect.minY + insetValue))
+            
+            path.addLine(to: CGPoint(x: rect.minX,
+                                     y: path.currentPoint?.y ?? 0))
         }
     }
 }

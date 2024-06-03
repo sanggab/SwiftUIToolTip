@@ -11,6 +11,7 @@ import SwiftUIToolTip
 @available(iOS 15.0, *)
 struct ContentView: View {
     var body: some View {
+//        Text("100sss")
         Text("sss")
             .frame(height: 53.333333)
 //            .frame(height: 36)
@@ -23,7 +24,7 @@ struct ContentView: View {
             }
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
-                             mode: .fixed,
+                             mode: .flexible,
                              tailSize: CGSize(width: 24, height: 10),
                              tailPosition: .leading,
                              tailAlignment: .top,
@@ -32,7 +33,7 @@ struct ContentView: View {
                              strokeColor: .pink.opacity(0.8),
                              strokeStyle: StrokeStyle(lineWidth: 4,
                                                       lineCap: .round,
-                                                      lineJoin: .round))
+                                                      lineJoin: .miter))
             }
     }
 }
