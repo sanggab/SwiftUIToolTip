@@ -2,15 +2,24 @@
 
 
 ### Requirements
-* iOS 13.0+
-* Xcode 11.0+
-* Swift 5.1
+* iOS 14.0+
+* Xcode 12.0+
+* Swift 5.3
 
 
 ### Content
 * [Documentation](#documentation)
   * [ToolTip Modifier](#toolTip_modifier)
-  * [주의점](#attention)
+    * [Option Description](#option_description)
+      * [style](#option_style)
+      * [mode](#option_mode)
+      * [tailSize](#option_tailSize)
+      * [tailPosition](#option_tailPosition)
+      * [tailAlignment](#option_tailAlignment)
+      * [cornerRadius](#option_cornerRadius)
+      * [fillColor](#option_fillColor)
+      * [strokeColor](#option_strokeColor)
+      * [strokeStyle](#option_strokeStyle)
   * [Method](#method)
  
 
@@ -26,23 +35,33 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 <a name="toolTip_modifier"></a>
 ## ToolTip Modifier
 
-##### ToolTipModel
+### ToolTipModel
 | Value | Description | Default |
 |:---------------------:|:------------------:|:---------:|
 | **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
+| **mode** | ToolTip을 fixed하게 그릴 지, flexible하게 그릴지 정한다. | fixed |
 | **tailSize** | ToolTip의 삼각형의 Size | zero |
 | **tailPosition** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
-| **movePoint** | ToolTip이 삼각형이 position의 center의 위치에서 x,y좌표를 기준으로 해당 값 만큼 움직일지 정한다. | zero(center) |
+| **tailAlignment** | ToolTip의 삼각형의 Alignment - 삼각형의 위치를 정한다. | center |
 | **cornerRadius** | View의 CornerRadius | zero |
 | **fillColor** | style이 fill일 때 적용되는 옵션 - Color를 바꾼다. | white |
 | **strokeColor** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
 | **strokeStyle** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
 
-<a name="attention"></a>
-### 주의점
 
-ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있습니다.   
+
+
+<a name="option_description"></a>
+## Option Description
+
+ToolTipModel의 Option 설명
+
+<a name="option_style"></a>
+### 1. style
+
+ToolTip의 그리는 방식을 정하는 옵션.   
+
 기본적으로 모든 style들은 tailSize, tailPosition, movePoint, cornerRadius를 다 적용받습니다.   
 하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
 
@@ -54,8 +73,46 @@ ToolTipModel의 style에 따라 적용되는게 있을 수 있고 아닐 수 있
 | **fillWithStroke** | O | O | O |
 | **fillWithStrokeBorder** | O | O | O |
 
-그리고 기본적으로 Shape의 특성을 그대로 사용하기 때문에 border을 적용시킬 때, stroke와 strokeBorder의 차이점을 유의하셔야 합니다.
 
+#### 주의점
+style을  strokeBorder 타입으로 설정하고 strokeStyle의 lineJoin을 miter로 설정한 경우,   
+cornerRadius가 존재해도 strokeStyle의 lineWidht의 절반을 초과하지 않는 이상 cornerRadius는 0으로 들어가게 됩니다.
+
+
+<a name="option_mode"></a>
+### 2. mode
+
+ToolTip을 그릴 때, 정해진 양식대로 그릴 것 인지 아니면 flexible하게 그릴 지 정하는 옵션.   
+
+<br>
+
+#### fixed
+
+###### Usage examples:
+
+```
+Text("100sss")
+    .padding()
+    .toolTip {
+        ToolTipModel(style: .strokeBorder,
+                     mode: .flexible,
+                     tailSize: CGSize(width: 40, height: 10),
+                     tailPosition: .top,
+                     tailAlignment: .leading,
+                     cornerRadius: 2,
+                     fillColor: .blue,
+                     strokeColor: .pink.opacity(0.8),
+                     strokeStyle: StrokeStyle(lineWidth: 4,
+                                              lineCap: .round,
+                                              lineJoin: .round))
+    }
+```
+
+
+| mode | draw |
+| --- | --- |
+| **fixed** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
+| **flexible** | <img src="doc_img/mode/mode_flexible.png" width="560"/> |
 
 <br>
 
