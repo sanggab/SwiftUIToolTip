@@ -24,14 +24,14 @@ extension ToolTipLeadingPath {
         let hypotenuse = insetValue * 2
         print("hypotenuse : \(hypotenuse)")
         
-        if tailSize.width + hypotenuse > rect.height {
+        if tailSize.width + hypotenuse + (cornerRadius * 2) > rect.height {
             print("해당 height에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
             viewModel.update(\.canDrawTail, false)
             var calHalfMin = min(halfWidth, halfHeight)
             calHalfMin = min(calHalfMin, cornerRadius)
             viewModel.update(\.cornerRadius, calHalfMin)
         } else {
-            let drawBaseLine = viewModel(\.tailSize.width) + (cornerRadius * 2)
+            let drawBaseLine = viewModel(\.tailSize.width) + (cornerRadius * 2) + hypotenuse
             print("drawBaseLine : \(drawBaseLine)")
             
             if drawBaseLine > rect.height {

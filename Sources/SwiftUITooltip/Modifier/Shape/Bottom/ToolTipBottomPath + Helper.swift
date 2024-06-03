@@ -24,14 +24,14 @@ extension ToolTipBottomPath {
         let hypotenuse = insetValue * 2
         print("hypotenuse : \(hypotenuse)")
         
-        if tailSize.width + hypotenuse > rect.width {
+        if tailSize.width + hypotenuse + (cornerRadius * 2) > rect.width {
             print("해당 width에 tail을 그릴 순 없으니 그냥 cornerRadius만 갱신시켜보자")
             viewModel.update(\.canDrawTail, false)
             var calHalfMin = min(halfWidth, halfHeight)
             calHalfMin = min(calHalfMin, cornerRadius)
             viewModel.update(\.cornerRadius, calHalfMin)
         } else {
-            let drawBaseLine = tailSize.width + (cornerRadius * 2)
+            let drawBaseLine = tailSize.width + (cornerRadius * 2) + hypotenuse
             print("drawBaseLine : \(drawBaseLine)")
             
             if drawBaseLine > rect.width {
