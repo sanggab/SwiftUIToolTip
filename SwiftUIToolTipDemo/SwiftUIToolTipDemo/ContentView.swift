@@ -12,17 +12,17 @@ import SwiftUIToolTip
 struct ContentView: View {
     var body: some View {
         Text("100sss")
-            .padding()
+//            .padding()
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 77, height: 10),
-                             tailPosition: .top,
-                             tailAlignment: .custom(-40),
+                             tailSize: CGSize(width: 10, height: 5),
+                             tailPosition: .bottom,
+                             tailAlignment: .center,
                              cornerRadius: 2,
                              fillColor: .blue,
                              strokeColor: .pink.opacity(0.8),
-                             strokeStyle: StrokeStyle(lineWidth: 4,
+                             strokeStyle: StrokeStyle(lineWidth: 1,
                                                       lineCap: .round,
                                                       lineJoin: .round))
             }
