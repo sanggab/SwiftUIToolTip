@@ -180,19 +180,14 @@ extension ToolTipLeadingPath {
 extension ToolTipLeadingPath {
     func getStartPointToSizeOverBaseLine(in rect: CGRect) -> CGPoint {
         print(#function)
+        let cornerRadius: CGFloat = viewModel(\.cornerRadius)
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .top:
-            startPoint = .zero
-        case .center:
-            startPoint = .zero
-        case .bottom:
-            startPoint = .zero
-        case .custom(let length):
-            startPoint = .zero
-        default:
-            startPoint = .zero
+        case .leading, .center, .trailing, .custom, .top, .bottom:
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + cornerRadius + insetValue)
         }
         
         print("startPoint : \(startPoint)")
@@ -204,16 +199,10 @@ extension ToolTipLeadingPath {
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .top:
-            startPoint = .zero
-        case .center:
-            startPoint = .zero
-        case .bottom:
-            startPoint = .zero
-        case .custom(let length):
-            startPoint = .zero
-        default:
-            startPoint = .zero
+        case .leading, .center, .trailing, .custom, .top, .bottom:
+            print("leading")
+            startPoint = CGPoint(x: rect.minX + insetValue,
+                                 y: rect.minY + insetValue)
         }
         
         print("startPoint : \(startPoint)")

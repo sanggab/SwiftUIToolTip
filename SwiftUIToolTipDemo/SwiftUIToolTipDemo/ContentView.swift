@@ -20,12 +20,12 @@ struct ContentView: View {
 //            .cornerRadius(5)
 //            .cornerRadius(5)
             .background {
-                RoundedRectangle(cornerRadius: 2).strokeBorder(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                RoundedRectangle(cornerRadius: 4).strokeBorder(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
             }
             .toolTip {
                 ToolTipModel(style: .strokeBorder,
                              mode: .flexible,
-                             tailSize: CGSize(width: 24, height: 10),
+                             tailSize: CGSize(width: 54, height: 10),
                              tailPosition: .leading,
                              tailAlignment: .top,
                              cornerRadius: 2,
