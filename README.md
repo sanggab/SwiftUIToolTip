@@ -79,6 +79,8 @@ style을  strokeBorder 타입으로 설정하고 strokeStyle의 lineJoin을 mite
 cornerRadius가 존재해도 strokeStyle의 lineWidht의 절반을 초과하지 않는 이상 cornerRadius는 0으로 들어가게 됩니다.
 
 
+
+
 <a name="option_mode"></a>
 ### 2. mode
 
@@ -108,7 +110,6 @@ Text("100sss")
     }
 ```
 
-
 | mode | draw |
 | --- | --- |
 | **fixed** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
@@ -116,8 +117,31 @@ Text("100sss")
 
 <br>
 
-<a name="Method"></a>
-### Method
+
+<a name="option_tailSize"></a>
+### 3.tailSize
+
+삼각형의 Size 옵션
+
+
+<a name="option_tailPosition"></a>
+### 4.tailPosition
+
+삼각형의 배치를 정하는 옵션
+
+| tailPosition | draw |
+|:-------:|:-------:|
+| **top** | <img src="doc_img/tailPosition/tailPosition_top.png" width="340"/> |
+| **leading** | <img src="doc_img/tailPosition/tailPosition_leading.png" width="340"/> |
+| **trailing** | <img src="doc_img/tailPosition/tailPosition_trailing.png" width="340"/> |
+| **bottom** | <img src="doc_img/tailPosition/tailPosition_bottom.png" width="340"/> |
+
+
+
+
+
+<a name="method"></a>
+## Method
 
 * **`func toolTip(style: ToolTipShapeStyle,
                      tailSize: CGSize = .zero,
