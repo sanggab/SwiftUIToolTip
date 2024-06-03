@@ -119,13 +119,13 @@ Text("100sss")
 
 
 <a name="option_tailSize"></a>
-### 3.tailSize
+### 3. tailSize
 
 삼각형의 Size 옵션
 
 
 <a name="option_tailPosition"></a>
-### 4.tailPosition
+### 4. tailPosition
 
 삼각형의 배치를 정하는 옵션
 
