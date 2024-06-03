@@ -72,7 +72,7 @@ extension ToolTipLeadingPath {
         switch viewModel(\.tailAlignment) {
         case .top:
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + cornerRadius + insetValue )
+                                 y: rect.minY + cornerRadius + insetValue)
         case .center:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.midY - (tailSize.width / 2))
