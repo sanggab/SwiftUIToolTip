@@ -55,89 +55,105 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 <a name="option_description"></a>
 ## Option Description
 
-ToolTipModel의 Option 설명
+* ToolTipModel의 Option 설명
 
-<a name="option_style"></a>
-### 1. style
+   <a name="option_style"></a>
+   ## 1. style
+   
+   * ToolTip의 그리는 방식을 정하는 옵션.   
+   
+   * 기본적으로 모든 style들은 tailSize, tailPosition, movePoint, cornerRadius를 다 적용받습니다.   
+     하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
+   
+     | style | fillColor | strokeColor | strokeStyle |
+     |:---------------------:|:-------:|:-------:|:-------:|
+     | **fill** | O | X | X |
+     | **stroke** | X | O | O |
+     | **strokeBorder** | X | O | O |
+     | **fillWithStroke** | O | O | O |
+     | **fillWithStrokeBorder** | O | O | O |
+   
+   
+   #### 주의점
+   * style을  strokeBorder 타입으로 설정하고 strokeStyle의 lineJoin을 miter로 설정한 경우,   
+   * cornerRadius가 존재해도 strokeStyle의 lineWidht의 절반을 초과하지 않는 이상 cornerRadius는 0으로 들어가게 됩니다.
 
-ToolTip의 그리는 방식을 정하는 옵션.   
-
-기본적으로 모든 style들은 tailSize, tailPosition, movePoint, cornerRadius를 다 적용받습니다.   
-하지만 fillColor, strokeColor, strokeStyle은 style에 따라 다를 수 있습니다.
-
-| style | fillColor | strokeColor | strokeStyle |
-|:---------------------:|:-------:|:-------:|:-------:|
-| **fill** | O | X | X |
-| **stroke** | X | O | O |
-| **strokeBorder** | X | O | O |
-| **fillWithStroke** | O | O | O |
-| **fillWithStrokeBorder** | O | O | O |
-
-
-#### 주의점
-style을  strokeBorder 타입으로 설정하고 strokeStyle의 lineJoin을 miter로 설정한 경우,   
-cornerRadius가 존재해도 strokeStyle의 lineWidht의 절반을 초과하지 않는 이상 cornerRadius는 0으로 들어가게 됩니다.
-
-
-
-
-<a name="option_mode"></a>
-### 2. mode
-
-ToolTip을 그릴 때, 정해진 양식대로 그릴 것 인지 아니면 flexible하게 그릴 지 정하는 옵션.   
-
-<br>
-
-#### fixed
-
-###### Usage examples:
-
-```
-Text("100sss")
-    .padding()
-    .toolTip {
-        ToolTipModel(style: .strokeBorder,
-                     mode: .flexible,
-                     tailSize: CGSize(width: 40, height: 10),
-                     tailPosition: .top,
-                     tailAlignment: .leading,
-                     cornerRadius: 2,
-                     fillColor: .blue,
-                     strokeColor: .pink.opacity(0.8),
-                     strokeStyle: StrokeStyle(lineWidth: 4,
-                                              lineCap: .round,
-                                              lineJoin: .round))
-    }
-```
-
-| mode | draw |
-| --- | --- |
-| **fixed** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
-| **flexible** | <img src="doc_img/mode/mode_flexible.png" width="560"/> |
-
-<br>
-
-
-<a name="option_tailSize"></a>
-### 3. tailSize
-
-삼각형의 Size 옵션
-
-
-<a name="option_tailPosition"></a>
-### 4. tailPosition
-
-삼각형의 배치를 정하는 옵션
-
-| tailPosition | draw |
-|:-------:|:-------:|
-| **top** | <img src="doc_img/tailPosition/tailPosition_top.png" width="340"/> |
-| **leading** | <img src="doc_img/tailPosition/tailPosition_leading.png" width="340"/> |
-| **trailing** | <img src="doc_img/tailPosition/tailPosition_trailing.png" width="340"/> |
-| **bottom** | <img src="doc_img/tailPosition/tailPosition_bottom.png" width="340"/> |
-
-
-
+   <br>
+   
+   <a name="option_mode"></a>
+   ## 2. mode
+   
+   * ToolTip을 그릴 때, 정해진 양식대로 그릴 것 인지 아니면 flexible하게 그릴 지 정하는 옵션.   
+   
+   <br>
+   
+   | mode | draw |
+   | --- | --- |
+   | **fixed** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
+   | **flexible** | <img src="doc_img/mode/mode_flexible.png" width="560"/> |
+   
+   <br>
+   
+   <a name="option_tailSize"></a>
+   ## 3. tailSize
+   
+   * 삼각형의 Size 옵션
+   
+   <br>
+   
+   <a name="option_tailPosition"></a>
+   ## 4. tailPosition
+   
+   * 삼각형의 배치를 정하는 옵션
+   
+   | tailPosition | draw |
+   |:-------:|:-------:|
+   | **top** | <img src="doc_img/tailPosition/tailPosition_top.png" width="340"/> |
+   | **leading** | <img src="doc_img/tailPosition/tailPosition_leading.png" width="340"/> |
+   | **trailing** | <img src="doc_img/tailPosition/tailPosition_trailing.png" width="340"/> |
+   | **bottom** | <img src="doc_img/tailPosition/tailPosition_bottom.png" width="340"/> |
+    
+   <br>
+    
+   <a name="option_tailAlignment"></a>
+   ## 5. tailAlignment
+   
+   * tailPosition에서 정해진 위치에서 삼각형을 leading, center, trailing, top, bottom, custom(CGFloat)로 이동시킬 것 인지 정하는 옵션   
+   
+   * tailPosition이 top, bottom일 경우에 tailAlignment를 top, bottom으로 설정할 경우 center로 바뀌고   
+   * tailPosition이 leading, trailing일 경우에 tailAlignment를 leading, trailing으로 설정할 경우 center로 바뀐다.   
+   
+   * custom은 x, y 좌표의 +, - 로 움직이는 것 처럼 사용하면 된다.
+   
+   <br>
+   
+   <a name="option_cornerRadius"></a>
+   ## 6. cornerRadius
+   
+   * ToolTip에 cornerRadius를 주는 옵션
+   
+   <br>
+   
+   <a name="option_fillColor"></a>
+   ## 7. fillColor
+   
+   * style이 fill, fillWithStroke, fillWithStrokeBorder일 때, 다 그려진 ToolTip을 지정한 Color로 그린다.
+   
+   <br>
+ 
+   <a name="option_strokeColor"></a>
+   ## 8. strokeColor
+   
+   * style이 stroke, strokeBorder, fillwithStroke, fillWithStrokeBorder일 때, 다 그려진 Tooltip을 지정한 Color로 그린다.
+   
+   <br>
+  
+   <a name="option_strokeStyle"></a>
+   ## 9. strokeStyle
+   
+   * style이 stroke, strokeBorder, fillWithStroke, fillWithSTrokeBorder일 때, strokeStyle을 적용시켜준다.
+   
+   <br>
 
 
 <a name="method"></a>
