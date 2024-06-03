@@ -89,8 +89,10 @@ public struct ToolTipModel: Equatable {
     /// StrokeStyle옵션
     public var strokeStyle: StrokeStyle
     
+    /// 삼각형을 그릴 수 있는 지 아닌지 옵션
     var canDrawTail: Bool = true
     
+    /// cornerRadius가 strokeStyle의 lineWidth의 절반 이하일 경우의 옵션
     var limitBaseLine: Bool = false
     
     public init(style: ToolTipShapeStyle,
