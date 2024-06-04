@@ -121,7 +121,15 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
    * tailPosition에서 정해진 위치에서 삼각형을 leading, center, trailing, top, bottom, custom(CGFloat)로 이동시킬 것 인지 정하는 옵션   
    
    * tailPosition이 top, bottom일 경우에 tailAlignment를 top, bottom으로 설정할 경우 center로 바뀌고   
-   * tailPosition이 leading, trailing일 경우에 tailAlignment를 leading, trailing으로 설정할 경우 center로 바뀐다.   
+   * tailPosition이 leading, trailing일 경우에 tailAlignment를 leading, trailing으로 설정할 경우 center로 바뀐다.
+ 
+     | `tailPosition` / `tailAlignment` | `top`  | `leading` | `trailing` | `bottom` | `center` | `custom` |
+     |:---------------------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+     | **`top`** | center | leading | trailing | center | center | custom |
+     | **`leading`** | top | center | center | bottom | center | custom |
+     | **`trailing`** | top | center | center | bottom | center | custom |
+     | **`bottom`** | center | leading | trailing | center | center | custom |
+     
    
    * custom은 x, y 좌표의 +, - 로 움직이는 것 처럼 사용하면 된다.
    
