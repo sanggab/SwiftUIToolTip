@@ -38,15 +38,15 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 ### ToolTipModel
 | Value | Description | Default |
 |:---------------------:|:------------------:|:---------:|
-| **style** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
-| **mode** | ToolTip을 fixed하게 그릴 지, flexible하게 그릴지 정한다. | fixed |
-| **tailSize** | ToolTip의 삼각형의 Size | zero |
-| **tailPosition** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
-| **tailAlignment** | ToolTip의 삼각형의 Alignment - 삼각형의 위치를 정한다. | center |
-| **cornerRadius** | View의 CornerRadius | zero |
-| **fillColor** | style이 fill일 때 적용되는 옵션 - Color를 바꾼다. | white |
-| **strokeColor** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
-| **strokeStyle** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
+| **`style`** | ToolTip의 fill, stroke, strokeBorder style을 정한다. | 필수 |
+| **`mode`** | ToolTip을 fixed하게 그릴 지, flexible하게 그릴지 정한다. | fixed |
+| **`tailSize`** | ToolTip의 삼각형의 Size | zero |
+| **`tailPosition`** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
+| **`tailAlignment`** | ToolTip의 삼각형의 Alignment - 삼각형의 위치를 정한다. | center |
+| **`cornerRadius`** | View의 CornerRadius | zero |
+| **`fillColor`** | style이 fill일 때 적용되는 옵션 - Color를 바꾼다. | white |
+| **`strokeColor`** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
+| **`strokeStyle`** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
 
 
@@ -67,11 +67,11 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
    
      | style | fillColor | strokeColor | strokeStyle |
      |:---------------------:|:-------:|:-------:|:-------:|
-     | **fill** | O | X | X |
-     | **stroke** | X | O | O |
-     | **strokeBorder** | X | O | O |
-     | **fillWithStroke** | O | O | O |
-     | **fillWithStrokeBorder** | O | O | O |
+     | **`fill`** | O | X | X |
+     | **`stroke`** | X | O | O |
+     | **`strokeBorder`** | X | O | O |
+     | **`fillWithStroke`** | O | O | O |
+     | **`fillWithStrokeBorder`** | O | O | O |
    
    
    #### 주의점
@@ -89,8 +89,8 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
    
    | mode | draw |
    | --- | --- |
-   | **fixed** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
-   | **flexible** | <img src="doc_img/mode/mode_flexible.png" width="560"/> |
+   | **`fixed`** (default) | <img src="doc_img/mode/mode_fixed.png" width="560"/> |
+   | **`flexible`** | <img src="doc_img/mode/mode_flexible.png" width="560"/> |
    
    <br>
    
@@ -108,10 +108,10 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
    
    | tailPosition | draw |
    |:-------:|:-------:|
-   | **top** | <img src="doc_img/tailPosition/tailPosition_top.png" width="340"/> |
-   | **leading** | <img src="doc_img/tailPosition/tailPosition_leading.png" width="340"/> |
-   | **trailing** | <img src="doc_img/tailPosition/tailPosition_trailing.png" width="340"/> |
-   | **bottom** | <img src="doc_img/tailPosition/tailPosition_bottom.png" width="340"/> |
+   | **`top`** | <img src="doc_img/tailPosition/tailPosition_top.png" width="340"/> |
+   | **`leading`** | <img src="doc_img/tailPosition/tailPosition_leading.png" width="340"/> |
+   | **`trailing`** | <img src="doc_img/tailPosition/tailPosition_trailing.png" width="340"/> |
+   | **`bottom`** | <img src="doc_img/tailPosition/tailPosition_bottom.png" width="340"/> |
     
    <br>
     
