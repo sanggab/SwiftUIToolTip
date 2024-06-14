@@ -49,7 +49,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 | **`strokeStyle`** | Shape의 StrokeyStyle 옵션 | StrokeyStyle() |
 
 
-
+<br>
 
 
 <a name="option_description"></a>
