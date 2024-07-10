@@ -183,7 +183,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 
    ##### Usage examples:
 
-   ```
+   ```swift
    Text("나는 문어 대왕 문어")
        .padding(.all, 8)
        .toolTip(style: .fillWithStroke,
@@ -208,7 +208,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 
    ###### Usage examples:
 
-   ```
+   ```swift
    Text("나는 문어 대왕 문어")
        .padding(.all, 8)
        .toolTip {
