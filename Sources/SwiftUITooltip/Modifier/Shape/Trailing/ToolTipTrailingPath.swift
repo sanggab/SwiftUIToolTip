@@ -21,7 +21,6 @@ struct ToolTipTrailingPath: PathFeatures {
 // MARK: Decide Path
 extension ToolTipTrailingPath {
     func fixedPath(in rect: CGRect) -> Path {
-        print(#function)
         return Path { path in
             let startPoint: CGPoint = getStartPointToFixed(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)
@@ -65,19 +64,16 @@ extension ToolTipTrailingPath {
     }
     
     func flexiblePath(in rect: CGRect) -> Path {
-        print(#function)
         return viewModel(\.canDrawTail) ? getPathToTailSizeNotOver(in: rect) : getPathToTailSizeOver(in: rect)
     }
     
     func getPathToTailSizeNotOver(in rect: CGRect) -> Path {
-        print(#function)
         return viewModel(\.limitBaseLine) ?
         tailSizeNotOverLimitBaseLine(in: rect) :
         tailSizeNotOverBaseLine(in: rect)
     }
     
     func getPathToTailSizeOver(in rect: CGRect) -> Path {
-        print(#function)
         return viewModel(\.limitBaseLine) ?
         tailSizeOverLimitBaseLine(in: rect) :
         tailSizeOverBaseLine(in: rect)
@@ -87,7 +83,6 @@ extension ToolTipTrailingPath {
 // MARK: TailSize Not Over Path
 extension ToolTipTrailingPath {
     func tailSizeNotOverBaseLine(in rect: CGRect) -> Path {
-        print(#function)
         return Path { path in
             let startPoint: CGPoint = getStartPointToBaseLine(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)
@@ -134,7 +129,6 @@ extension ToolTipTrailingPath {
     }
     
     func tailSizeNotOverLimitBaseLine(in rect: CGRect) -> Path {
-        print(#function)
         return Path { path in
             let startPoint: CGPoint = getStartPointToLimitBaseLine(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)
@@ -171,7 +165,6 @@ extension ToolTipTrailingPath {
 // MARK: TailSize Over Path
 extension ToolTipTrailingPath {
     func tailSizeOverBaseLine(in rect: CGRect) -> Path {
-        print(#function)
         return Path { path in
             let startPoint: CGPoint = getStartPointToSizeOverBaseLine(in: rect)
             
@@ -209,7 +202,6 @@ extension ToolTipTrailingPath {
     }
     
     func tailSizeOverLimitBaseLine(in rect: CGRect) -> Path {
-        print(#function)
         return Path { path in
             let startPoint: CGPoint = getStartPointToSizeOverLimitBaseLine(in: rect)
             

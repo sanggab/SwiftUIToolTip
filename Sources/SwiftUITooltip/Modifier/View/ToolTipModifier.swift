@@ -53,9 +53,6 @@ public struct ToolTipModifier: ViewModifier {
                     }
                 }
             }
-            .onChange(of: calStrokeStyle) { newValue in
-                print("calStrokeStyle : \(newValue)")
-            }
     }
     
     @ViewBuilder
