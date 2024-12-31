@@ -125,7 +125,7 @@ extension ToolTipTopPath {
             path.closeSubpath()
         }
     }
-    
+    /// 삼각형의 사이즈가
     func tailSizeNotOverLimitBaseLine(in rect: CGRect) -> Path {
         return Path { path in
             let startPoint: CGPoint = getStartPointToLimitBaseLine(in: rect)
@@ -162,6 +162,7 @@ extension ToolTipTopPath {
 
 // MARK: TailSize Over Path
 extension ToolTipTopPath {
+    /// 삼각형 사이즈 over
     func tailSizeOverBaseLine(in rect: CGRect) -> Path {
         return Path { path in
             let startPoint: CGPoint = getStartPointToSizeOverBaseLine(in: rect)

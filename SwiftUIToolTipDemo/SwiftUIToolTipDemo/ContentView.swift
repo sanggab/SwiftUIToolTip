@@ -11,16 +11,19 @@ import SwiftUIToolTip
 @available(iOS 15.0, *)
 struct ContentView: View {
     var body: some View {
-        Text("100sss")
+        Text("tool tip text box")
+            .padding(.horizontal, 12)
+            .frame(height: 32)
 //            .padding()
             .toolTip {
-                ToolTipModel(style: .strokeBorder,
+                ToolTipModel(style: .fill,
                              mode: .flexible,
                              tailSize: CGSize(width: 10, height: 5),
-                             tailPosition: .bottom,
-                             tailAlignment: .center,
-                             cornerRadius: 2,
-                             fillColor: .blue,
+                             tailPosition: .top,
+                             tailAlignment: .trailing,
+                             movePoint: .zero,
+                             cornerRadius: 8,
+                             fillColor: .pink,
                              strokeColor: .pink.opacity(0.8),
                              strokeStyle: StrokeStyle(lineWidth: 1,
                                                       lineCap: .round,

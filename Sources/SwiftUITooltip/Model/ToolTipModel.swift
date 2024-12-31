@@ -74,8 +74,11 @@ public struct ToolTipModel: Equatable {
     /// 삼각형의 위치 - 상/하/좌/우
     public var tailPosition: TailPosition
     
-    
+    /// 삼각형의 alignment
     public var tailAlignment: TailAlignment
+    
+    /// 삼각형의 alignment에서 이동할 좌표 값
+    public var movePoint: CGFloat = .zero
     
     /// View의 cornerRadius
     public var cornerRadius: CGFloat
@@ -100,6 +103,7 @@ public struct ToolTipModel: Equatable {
                 tailSize: CGSize = .zero,
                 tailPosition: TailPosition = .top,
                 tailAlignment: TailAlignment = .center,
+                movePoint: CGFloat = .zero,
                 cornerRadius: CGFloat = .zero,
                 fillColor: Color = .white,
                 strokeColor: Color = .white,

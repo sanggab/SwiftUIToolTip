@@ -27,6 +27,7 @@ public extension View {
                             tailSize: CGSize = .zero,
                             tailPosition: TailPosition = .top,
                             tailAlignment: TailAlignment = .center,
+                            movePoint: CGFloat = .zero,
                             cornerRadius: CGFloat = .zero,
                             fillColor: Color = .white,
                             strokeColor: Color = .white,

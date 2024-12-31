@@ -51,27 +51,28 @@ extension ToolTipTopPath {
     func getStartPointToFixed(in rect: CGRect) -> CGPoint {
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         let tailSize: CGSize = viewModel(\.tailSize)
+        let movePoint: CGFloat = viewModel(\.movePoint)
         
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .leading:
-            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue,
+            startPoint = CGPoint(x: rect.minX + cornerRadius + insetValue + movePoint,
                                  y: rect.minY + insetValue)
             
         case .center:
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + movePoint,
                                  y: rect.minY + insetValue)
             
         case .trailing:
-            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue,
+            startPoint = CGPoint(x: rect.maxX - cornerRadius - tailSize.width - insetValue + movePoint,
                                  y: rect.minY + insetValue)
             
         case .custom(let length):
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + length,
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + length + movePoint,
                                  y: rect.minY + insetValue)
         default:
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2) + movePoint,
                                  y: rect.minY + insetValue)
         }
      
