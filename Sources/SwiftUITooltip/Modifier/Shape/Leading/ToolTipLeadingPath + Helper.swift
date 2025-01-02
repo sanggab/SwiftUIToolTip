@@ -53,25 +53,26 @@ extension ToolTipLeadingPath {
     func getStartPointToFixed(in rect: CGRect) -> CGPoint {
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         let tailSize: CGSize = viewModel(\.tailSize)
+        let movePoint: CGFloat = viewModel(\.movePoint)
         
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .top:
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + cornerRadius + insetValue)
+                                 y: rect.minY + cornerRadius + insetValue + movePoint)
         case .center:
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: rect.midY - (tailSize.width / 2) + movePoint)
         case .bottom:
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.maxY - cornerRadius - tailSize.width - insetValue)
+                                 y: rect.maxY - cornerRadius - tailSize.width - insetValue + movePoint)
         case .custom(let length):
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2) + length)
+                                 y: rect.midY - (tailSize.width / 2) + length + movePoint)
         default:
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: rect.midY - (tailSize.width / 2) + movePoint)
         }
         
         return startPoint

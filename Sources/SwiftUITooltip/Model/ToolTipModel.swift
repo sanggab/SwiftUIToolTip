@@ -113,6 +113,7 @@ public struct ToolTipModel: Equatable {
         self.tailSize = tailSize
         self.tailPosition = tailPosition
         self.tailAlignment = tailAlignment
+        self.movePoint = movePoint
         self.cornerRadius = cornerRadius
         self.fillColor = fillColor
         self.strokeColor = strokeColor

@@ -15,9 +15,10 @@ public extension View {
     ///
     /// - Parameters:
     ///     - style: ToolTip의 fill, stroke, strokeBorder의 옵션 style
+    ///     - mode: ToolTip의 Layout Mode
     ///     - tailSize: 삼각형의 사이즈
     ///     - tailPosition: 삼각형의 위치 - 상/하/좌/우
-    ///     - movePoint: center에서 x,y좌표를 기준으로 얼만큼 움직일것인가
+    ///     - movePoint: tailAlignment에서 x,y좌표를 기준으로 얼만큼 움직일것인가
     ///     - cornerRadius: View의 cornerRadius
     ///     - fillColor: style의 fill이 들어간 옵션일 때, 적용되는 Color
     ///     - strokeColor: style의 stroke이 들어간 옵션일 때, 적용되는 Color

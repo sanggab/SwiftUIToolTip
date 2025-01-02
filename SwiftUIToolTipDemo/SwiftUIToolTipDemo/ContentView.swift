@@ -21,13 +21,13 @@ struct ContentView: View {
                              tailSize: CGSize(width: 10, height: 5),
                              tailPosition: .top,
                              tailAlignment: .trailing,
-                             movePoint: .zero,
+                             movePoint: 0,
                              cornerRadius: 8,
-                             fillColor: .pink,
-                             strokeColor: .pink.opacity(0.8),
-                             strokeStyle: StrokeStyle(lineWidth: 1,
-                                                      lineCap: .round,
-                                                      lineJoin: .round))
+                             fillColor: .pink)
+//                             strokeColor: .pink.opacity(0.8),
+//                             strokeStyle: StrokeStyle(lineWidth: 1,
+//                                                      lineCap: .round,
+//                                                      lineJoin: .round))
             }
         
         
