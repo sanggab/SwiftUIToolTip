@@ -155,7 +155,9 @@ extension ToolTipTopPath {
                                      y: rect.maxY - insetValue))
             
             path.addLine(to: CGPoint(x: rect.minX + insetValue,
-                                     y: rect.minY))
+                                     y: rect.minY + insetValue))
+            
+            path.closeSubpath()
         }
     }
 }

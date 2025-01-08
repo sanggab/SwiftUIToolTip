@@ -52,7 +52,7 @@ extension ToolTipTopPath {
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         let tailSize: CGSize = viewModel(\.tailSize)
         let movePoint: CGFloat = viewModel(\.movePoint)
-        print("상갑 logEvent \(#function) movePoint: \(movePoint)")
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
@@ -85,14 +85,14 @@ extension ToolTipTopPath {
     func getStartPointToBaseLine(in rect: CGRect) -> CGPoint {
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         let tailSize: CGSize = viewModel(\.tailSize)
-        let movePoint: CGFloat = viewModel(\.movePoint)
-        print("상갑 logEvent \(#function) movePoint: \(movePoint)")
         
-        var startPoint: CGPoint = .zero
+        let movePoint: CGFloat = viewModel(\.movePoint)
         
         let leadingPoint = rect.minX + cornerRadius + insetValue
         let centerPoint = rect.midX - (tailSize.width / 2)
         let trailingPoint = rect.maxX - cornerRadius - tailSize.width - insetValue
+        
+        var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .leading:
@@ -147,40 +147,59 @@ extension ToolTipTopPath {
     
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
         let tailSize: CGSize = viewModel(\.tailSize)
+        let movePoint: CGFloat = viewModel(\.movePoint)
+        
+        let leadingPoint = rect.minX + insetValue
+        let centerPoint = rect.midX - (tailSize.width / 2)
+        let trailingPoint = rect.maxX - tailSize.width - insetValue
         
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .leading:
-            startPoint = CGPoint(x: rect.minX + insetValue,
+            let condition1 = max(leadingPoint, leadingPoint + movePoint)
+            let condition2 = min(condition1, trailingPoint)
+            
+            startPoint = CGPoint(x: condition2,
                                  y: rect.minY + insetValue)
             
         case .center:
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+            let condition1 = max(leadingPoint, centerPoint + movePoint)
+            let condition2 = min(condition1, trailingPoint)
+            
+            startPoint = CGPoint(x: condition2,
                                  y: rect.minY + insetValue)
             
         case .trailing:
-            startPoint = CGPoint(x: rect.maxX - tailSize.width - insetValue,
+            let condition1 = min(trailingPoint, trailingPoint + movePoint)
+            let condition2 = max(condition1, leadingPoint)
+            
+            startPoint = CGPoint(x: condition2,
                                  y: rect.minY + insetValue)
             
-        case .custom(let length):
-            if length >= 0 {
-                let maxPoint = rect.maxX - tailSize.width - insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: min(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-                
-            } else {
-                let maxPoint = rect.minX + insetValue
-                let calPoint = rect.midX - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: max(maxPoint, calPoint),
-                                     y: rect.minY + insetValue)
-            }
+//        case .custom(let length):
+//            if length >= 0 {
+//                let maxPoint = rect.maxX - tailSize.width - insetValue
+//                let calPoint = rect.midX - (tailSize.width / 2) + length
+//                
+//                startPoint = CGPoint(x: min(maxPoint, calPoint),
+//                                     y: rect.minY + insetValue)
+//                
+//            } else {
+//                let maxPoint = rect.minX + insetValue
+//                let calPoint = rect.midX - (tailSize.width / 2) + length
+//                
+//                startPoint = CGPoint(x: max(maxPoint, calPoint),
+//                                     y: rect.minY + insetValue)
+//            }
         default:
-            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+            let condition1 = max(leadingPoint, centerPoint + movePoint)
+            let condition2 = min(condition1, trailingPoint)
+            
+            startPoint = CGPoint(x: condition2,
                                  y: rect.minY + insetValue)
+//            startPoint = CGPoint(x: rect.midX - (tailSize.width / 2),
+//                                 y: rect.minY + insetValue)
         }
      
         return startPoint
