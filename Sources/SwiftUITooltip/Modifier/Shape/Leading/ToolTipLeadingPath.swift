@@ -21,6 +21,7 @@ struct ToolTipLeadingPath: PathFeatures {
 // MARK: Decide Path
 extension ToolTipLeadingPath {
     func fixedPath(in rect: CGRect) -> Path {
+        print("상갑 logEvent \(#function)")
         return Path { path in
             let startPoint: CGPoint = getStartPointToFixed(in: rect)
             let tailSize: CGSize = viewModel(\.tailSize)

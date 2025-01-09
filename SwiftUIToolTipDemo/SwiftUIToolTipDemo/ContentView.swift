@@ -17,11 +17,11 @@ struct ContentView: View {
 //            .padding()
             .toolTip {
                 ToolTipModel(style: .fillWithStroke,
-                             mode: .flexible,
+                             mode: .fixed,
                              tailSize: CGSize(width: 10, height: 5),
-                             tailPosition: .top,
-                             tailAlignment: .trailing,
-                             movePoint: -250,
+                             tailPosition: .leading,
+                             tailAlignment: .top,
+                             movePoint: 10,
                              cornerRadius: 2,
                              fillColor: .mint,
                              strokeColor: .pink.opacity(0.2),

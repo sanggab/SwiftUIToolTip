@@ -85,6 +85,12 @@ extension ToolTipLeadingPath {
         let cornerRadius: CGFloat = viewModel(\.cornerRadius)
         let tailSize: CGSize = viewModel(\.tailSize)
         
+        let movePoint: CGFloat = viewModel(\.movePoint)
+        
+        let topPoint = rect.minY + cornerRadius + insetValue
+        let centerPoint = rect.midY - (tailSize.width / 2)
+        let bottomPoint = rect.maxY - cornerRadius - tailSize.width - insetValue
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
