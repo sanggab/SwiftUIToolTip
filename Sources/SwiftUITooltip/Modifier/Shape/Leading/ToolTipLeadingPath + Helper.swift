@@ -95,32 +95,29 @@ extension ToolTipLeadingPath {
         
         switch viewModel(\.tailAlignment) {
         case .top:
+            let condition1 = max(topPoint, topPoint + movePoint)
+            let condition2 = min(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + cornerRadius + insetValue)
+                                 y: condition2)
         case .center:
+            let condition1 = max(topPoint, centerPoint + movePoint)
+            let condition2 = min(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: condition2)
         case .bottom:
+            let condition1 = min(bottomPoint, bottomPoint + movePoint)
+            let condition2 = max(topPoint, condition1)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.maxY - cornerRadius - tailSize.width - insetValue)
-        case .custom(let length):
-            if length >= 0 {
-                let maxPoint = rect.maxY - cornerRadius - tailSize.width - insetValue
-                let calPoint = rect.midY - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: rect.minX + insetValue,
-                                     y: min(maxPoint, calPoint))
-                
-            } else {
-                let maxPoint = rect.minY + cornerRadius + insetValue
-                let calPoint = rect.midY - (tailSize.width / 2) + length
-
-                startPoint = CGPoint(x: rect.minX + insetValue,
-                                     y: max(maxPoint, calPoint))
-            }
+                                 y: condition2)
         default:
+            let condition1 = min(topPoint, centerPoint + movePoint)
+            let condition2 = max(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: condition2)
         }
         
         return startPoint
@@ -129,36 +126,39 @@ extension ToolTipLeadingPath {
     func getStartPointToLimitBaseLine(in rect: CGRect) -> CGPoint {
         let tailSize: CGSize = viewModel(\.tailSize)
         
+        let movePoint: CGFloat = viewModel(\.movePoint)
+        
+        let topPoint = rect.minY + insetValue
+        let centerPoint = rect.midY - (tailSize.width / 2)
+        let bottomPoint = rect.maxY - tailSize.width - insetValue
+        
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
         case .top:
+            let condition1 = max(topPoint, topPoint + movePoint)
+            let condition2 = min(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.minY + insetValue)
+                                 y: condition2)
         case .center:
+            let condition1 = max(topPoint, centerPoint + movePoint)
+            let condition2 = min(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: condition2)
         case .bottom:
+            let condition1 = min(bottomPoint, bottomPoint + movePoint)
+            let condition2 = max(topPoint, condition1)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.maxY - tailSize.width - insetValue)
-        case .custom(let length):
-            if length >= 0 {
-                let maxPoint = rect.maxY - tailSize.width - insetValue
-                let calPoint = rect.midY - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: rect.minX + insetValue,
-                                     y: min(maxPoint, calPoint))
-                
-            } else {
-                let maxPoint = rect.minY + insetValue
-                let calPoint = rect.midY - (tailSize.width / 2) + length
-                
-                startPoint = CGPoint(x: rect.minX + insetValue,
-                                     y: max(maxPoint, calPoint))
-            }
+                                 y: condition2)
         default:
+            let condition1 = min(topPoint, centerPoint + movePoint)
+            let condition2 = max(condition1, bottomPoint)
+            
             startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2))
+                                 y: condition2)
         }
         
         return startPoint
