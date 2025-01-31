@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ToolTipViewModel: ObservableObject {
+final class ToolTipViewModel: ObservableObject {
     @Published private var model: ToolTipModel = .init(style: .fill)
     
     init(model: ToolTipModel) {
