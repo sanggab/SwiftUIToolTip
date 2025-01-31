@@ -23,7 +23,8 @@ public extension View {
     ///     - fillColor: style의 fill이 들어간 옵션일 때, 적용되는 Color
     ///     - strokeColor: style의 stroke이 들어간 옵션일 때, 적용되는 Color
     ///     - strokeStyle: StrokeStyle옵션
-    @inlinable func toolTip(style: ToolTipShapeStyle,
+    @inlinable
+    func toolTip(style: ToolTipShapeStyle,
                             mode: ToolTipLayoutMode = .fixed,
                             tailSize: CGSize = .zero,
                             tailPosition: TailPosition = .top,
@@ -50,7 +51,8 @@ public extension View {
     ///
     /// - Parameters:
     ///     - model: ToolTip을 구성하기 위해 필요한 모델
-    @inlinable func toolTip(_ model: @escaping () -> ToolTipModel) -> some View {
+    @inlinable
+    func toolTip(_ model: @escaping () -> ToolTipModel) -> some View {
         modifier(ToolTipModifier(model: model()))
     }
 }
