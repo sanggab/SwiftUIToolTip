@@ -2,6 +2,13 @@
 
 -----
 
+## [1.3.0 - The movePoint has been resurrected](https://github.com/sanggab/SwiftUIToolTip/releases/tag/1.3.0) (2025-01-31)
+* 1.2.0 버전에서 사라진 `movePoint`가 새롭게 돌아왔습니다!  
+* `tailPosition` 과 `tailAlignment`에 의해 배치된 삼각형이 해당 위치에서 x,y 좌표 기준으로 추가로 이동할 거리를 지정할 수 있습니다.
+* `ToolTipLayoutMode` 모드에서 `flexible`를 선택한 경우, `movePoint`를 배치할 수 있는 좌표까지 최대한 배치합니다.
+
+---
+
 ## [1.2.0 - Added New ToolTipModel Option, Added handling for cases when using strokeBorder](https://github.com/sanggab/SwiftUIToolTip/releases/tag/1.2.0) (2024-06-04)
 * 기존 ToolTipModel의 옵션 중 `movePoint`가 사라지고 새로운 옵션인 `mode`, `tailAlignment`가 추가되었습니다.
 * `mode`는 내가 입력한 model대로 그려지게 하는 `fixed` 모드, 내가 입력한 model이 rect가 오버해서 이상하게 그려질 경우를 유연하게 잡아주는 `flexible` 옵션을 제공해줍니다.
