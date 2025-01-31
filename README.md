@@ -43,6 +43,7 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 | **`tailSize`** | ToolTip의 삼각형의 Size | zero |
 | **`tailPosition`** | ToolTip의 삼각형의 위치 - 상/하/좌/우 | top |
 | **`tailAlignment`** | ToolTip의 삼각형의 Alignment - 삼각형의 위치를 정한다. | center |
+| **`movePoint`** | ToolTip의 삼각형의 Alignment에서 이동할 좌표 값 | zero |
 | **`cornerRadius`** | View의 CornerRadius | zero |
 | **`fillColor`** | style이 fill일 때 적용되는 옵션 - Color를 바꾼다. | white |
 | **`strokeColor`** | style이 stroke거나 strokeBorder일 때 적용되는 옵션 - Color를 바꾼다. | white |
@@ -168,13 +169,15 @@ SwiftUI에서 ToolTip을 그릴려면 tail의 position이 해당 View의 rect의
 ## Method
 
 * **`func toolTip(style: ToolTipShapeStyle,
-                     tailSize: CGSize = .zero,
-                     tailPosition: TailPosition = .top,
-                     movePoint: CGFloat = .zero,
-                     cornerRadius: CGFloat = .zero,
-                     fillColor: Color = .white,
-                     strokeColor: Color = .white,
-                     strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
+                            mode: ToolTipLayoutMode = .fixed,
+                            tailSize: CGSize = .zero,
+                            tailPosition: TailPosition = .top,
+                            tailAlignment: TailAlignment = .center,
+                            movePoint: CGFloat = .zero,
+                            cornerRadius: CGFloat = .zero,
+                            fillColor: Color = .white,
+                            strokeColor: Color = .white,
+                            strokeStyle: StrokeStyle = StrokeStyle()) -> some View`**
 
 
    설정한 parameters에 따라 toolTip을 그립니다.
