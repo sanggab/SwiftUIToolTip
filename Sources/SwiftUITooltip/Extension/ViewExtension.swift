@@ -49,7 +49,7 @@ public extension View {
     /// ToolTipModel을 이용해서 ToolTip을 만든다.
     ///
     /// - Parameters:
-    ///     - ToolTipModel: ToolTip을 구성하기 위해 필요한 모델
+    ///     - model: ToolTip을 구성하기 위해 필요한 모델
     @inlinable func toolTip(_ model: @escaping () -> ToolTipModel) -> some View {
         modifier(ToolTipModifier(model: model()))
     }

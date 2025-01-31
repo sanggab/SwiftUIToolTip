@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-public struct ToolTipShape: Shape, InsettableShape {
+struct ToolTipShape: Shape, InsettableShape {
     @Environment(\.layoutDirection) private var layoutDirection
     
     @ObservedObject var viewModel: ToolTipViewModel
     
     @State var provider: PathProvidingProtocol?
     
-    public var model: ToolTipModel
+    var model: ToolTipModel
     
-    public var insetValue: CGFloat = 0
+    var insetValue: CGFloat = 0
     
-    public init(model: ToolTipModel) {
+    init(model: ToolTipModel) {
         self.model = model
         viewModel = ToolTipViewModel(model: model)
         _provider = State(wrappedValue: getPathProviding())
     }
     
-    public func path(in rect: CGRect) -> Path {
+    func path(in rect: CGRect) -> Path {
         switch model.tailPosition {
         case .top:
             return tailTopPath(in: rect)
@@ -46,7 +46,7 @@ public struct ToolTipShape: Shape, InsettableShape {
     }
     
     
-    public func inset(by amount: CGFloat) -> some InsettableShape {
+    func inset(by amount: CGFloat) -> some InsettableShape {
         var tooltip = self
         tooltip.insetValue = amount
         return tooltip

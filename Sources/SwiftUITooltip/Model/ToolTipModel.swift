@@ -7,45 +7,47 @@
 
 import SwiftUI
 
-/// 삼각형의 위치 - 상, 하, 좌, 우
+/// 삼각형의 위치
 @frozen
 public enum TailPosition: Equatable {
+    /// 상
     case top
-    
+    /// 좌
     case leading
-    
+    /// 우
     case trailing
-    
+    /// 하
     case bottom
 }
 
 /// ToolTip의 fill, stroke, strokeBorder의 옵션 style
 @frozen
 public enum ToolTipShapeStyle: Equatable {
+    /// fill
     case fill
-    
+    /// stroke
     case stroke
-    
+    /// strokeBorder
     case strokeBorder
-    
+    /// fill & stroke
     case fillWithStroke
-    
+    /// fill & strokeBorder
     case fillWithStrokeBorder
 }
 
+/// ToolTip Tail의 Alignment 방식
 @frozen
 public enum TailAlignment: Equatable {
+    /// 왼쪽
     case leading
-    
+    /// 중앙
     case center
-    
+    /// 오른쪽
     case trailing
-    
+    /// 상단
     case top
-    
+    /// 하단
     case bottom
-    
-    case custom(CGFloat)
 }
 
 /// ToolTip의 Layout Mode
@@ -53,8 +55,9 @@ public enum TailAlignment: Equatable {
 /// flexible을 설정할 경우, tailSize가 부모 size보다 오버할 경우, 유연하게 잡아주도록 한다.
 @frozen
 public enum ToolTipLayoutMode: Equatable {
+    /// 고정 사이즈
     case fixed
-    
+    /// 유동 사이즈
     case flexible
 }
 
@@ -122,6 +125,7 @@ public struct ToolTipModel: Equatable {
 }
 
 public extension ToolTipModel {
+    /// ToolTipModel의 style이 strokeBorder인지 파악하는 변수
     var isStrokeBorder: Bool {
         switch self.style {
         case .fill:

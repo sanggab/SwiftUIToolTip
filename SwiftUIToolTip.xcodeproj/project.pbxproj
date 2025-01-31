@@ -23,6 +23,7 @@
 		EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500A62BFC84450013B2DA /* ToolTipModel.swift */; };
 		EFD500B32BFC85180013B2DA /* SwiftUIToolTipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */; };
 		EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD500C22BFDCEE60013B2DA /* ToolTipViewModel.swift */; };
+		EFE31DDF2D420450005300A7 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = EFE31DDE2D420450005300A7 /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EFD500A62BFC84450013B2DA /* ToolTipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipModel.swift; sourceTree = "<group>"; };
 		EFD500B22BFC85180013B2DA /* SwiftUIToolTipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIToolTipTests.swift; sourceTree = "<group>"; };
 		EFD500C22BFDCEE60013B2DA /* ToolTipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipViewModel.swift; sourceTree = "<group>"; };
+		EFE31DDE2D420450005300A7 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		EFD500592BFC83E40013B2DA = {
 			isa = PBXGroup;
 			children = (
+				EFE31DDE2D420450005300A7 /* Documentation.docc */,
 				EFD5009C2BFC84450013B2DA /* Sources */,
 				EFD500B02BFC85180013B2DA /* Tests */,
 				EFD500642BFC83E40013B2DA /* Products */,
@@ -347,6 +350,7 @@
 				EFD500AA2BFC84450013B2DA /* ToolTipModifier.swift in Sources */,
 				EFD500AB2BFC84450013B2DA /* ToolTipModel.swift in Sources */,
 				EF8ECA6F2C083B23001F9479 /* ToolTipTrailingPath.swift in Sources */,
+				EFE31DDF2D420450005300A7 /* Documentation.docc in Sources */,
 				EFD500C32BFDCEE60013B2DA /* ToolTipViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

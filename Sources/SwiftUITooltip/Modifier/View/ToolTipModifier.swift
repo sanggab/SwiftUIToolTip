@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ToolTipModifier: ViewModifier {
-    public var model: ToolTipModel
+    private var model: ToolTipModel
     
     @State private var calStrokeStyle: StrokeStyle = .init()
     @State private var size: CGSize = .zero

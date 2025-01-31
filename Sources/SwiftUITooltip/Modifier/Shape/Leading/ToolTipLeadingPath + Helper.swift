@@ -67,9 +67,6 @@ extension ToolTipLeadingPath {
         case .bottom:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.maxY - cornerRadius - tailSize.width - insetValue + movePoint)
-        case .custom(let length):
-            startPoint = CGPoint(x: rect.minX + insetValue,
-                                 y: rect.midY - (tailSize.width / 2) + length + movePoint)
         default:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.midY - (tailSize.width / 2) + movePoint)
@@ -173,7 +170,7 @@ extension ToolTipLeadingPath {
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .leading, .center, .trailing, .custom, .top, .bottom:
+        case .leading, .center, .trailing, .top, .bottom:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.minY + cornerRadius + insetValue)
         }
@@ -185,7 +182,7 @@ extension ToolTipLeadingPath {
         var startPoint: CGPoint = .zero
         
         switch viewModel(\.tailAlignment) {
-        case .leading, .center, .trailing, .custom, .top, .bottom:
+        case .leading, .center, .trailing, .top, .bottom:
             startPoint = CGPoint(x: rect.minX + insetValue,
                                  y: rect.minY + insetValue)
         }
